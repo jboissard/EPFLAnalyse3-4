@@ -1,0 +1,87 @@
+\chapter[Intégration complexe]{Intégration complexe}
+
+\section{Généralités}
+\begin{myDefinition} 
+	La définition de l'intégrale curviligne reste valable pour les complexes
+	\\
+	$\int_\gamma f(z)\,\mathrm{d}z = \int_a^b f(\gamma(t))\,\gamma\,'(t)\,\mathrm{d}t.$
+\end{myDefinition}
+
+\begin{myTheorem}
+	{\bf Théorème de Cauchy}
+	\\
+	$\oint_\gamma f(z)\,dz = 0. $
+\end{myTheorem}
+\begin{myTheorem}
+	{\bf Formule intégrale de Cauchy}
+	\\
+	$f^{(n)}(z) = {n! \over 2\pi i} \oint_\gamma {f(\xi) \over (\xi-z)^{n+1}}\, d\xi.$
+	\\en particulier quand $n=0$, cette formule s'écrit
+	\\
+	$f(z) = {1 \over 2\pi i} \oint_\gamma {f(\xi) \over (\xi-z)}\, d\xi.$
+
+\end{myTheorem}
+\begin{myExample}
+	Soit $\gamma$ une courbe simple fermée et régulière par morceaux.
+	\\Discuter en fonction de $\gamma$ l'intégrale suivante:\\
+	$\oint_\gamma {\cos 2z \over z}\, dz.$
+	\\
+	On observe que $\xi=0$ est une singularité pour $f(\xi)=\cos 2\xi /\xi$. On distingue plusieurs cas.
+	\\
+	\\
+	{\it Cas 1:} $0 \in int \gamma$. On applique la formule intégrale de Cauchy à $g(\xi)=\cos 2\xi $
+	\\
+	$g(0)=1=\frac{1}{2\pi i}\oint_\gamma \frac{\cos 2\xi}{\xi -0}\, d\xi$
+	\\
+	Remarquons que dans ce cas une intégration directe n'aurait pas été évidente:
+	\\
+	$\oint_\gamma \frac{\cos 2z}{z}\,dz=\int_{0}^{2\pi} \frac{\cos 2e^{i\theta}}{e^{i\theta}}ie^{i\theta}\,dz=i\int_{0}^{2\pi} \cos 2e^{i\theta}\,dz$
+	\\
+	\\
+	{\it Cas 2:} $0\notin \overline{int \gamma}$ 
+	\\
+	Grâce au théorème de Cauchy, on peut immédiatement dire que 
+	\\
+	$\oint_\gamma \frac{\cos 2z}{z}\,dz=0$
+	\\
+	\\
+	{\it Cas 3: $0 \in \gamma$} Dans ce cas l'intégrale n'est pas bien définie.\textcolor{red}{Pourquoi?}
+\end{myExample}
+
+\begin{myExample}
+	Calculer $\int_\gamma z^2+1\,dz$ où $\gamma = [1,1+i]$
+	\\
+	\\
+	$\{\gamma(t)=1 + it$ où $t \in [0,1]$\}
+	\\
+	$\int_\gamma z^2+1\,dz=i\int_0^1 (1 + it)^2+1\,dt=i\int_0^1 2+2it-t^2\,dt=\frac{5}{3}i+1$
+\end{myExample}
+
+\begin{myExample}
+	Calculer
+	$\oint_\gamma \frac{e^{z^2}}{(z-1)^2(z^2+4)}\,dz$
+	\\dans les cas suivants :
+	\begin{enumerate}
+		\item $\gamma$ est le cercle centré en (1; 0) et de rayon 1
+		\item $\gamma$ est le bord du rectangle [-1/2; 1/2] x [0; 4]
+		\item $\gamma$ est le bord du rectangle [-2; 0] x [-1; 1]
+	\end{enumerate} 
+
+	Tout d'abord on ré-écrit l'intégrale de la façon suivante:
+	$\oint_\gamma \frac{e^{z^2}}{(z-1)^2(z-2i)(z+2i)}\,dz$
+	\\
+	On a donc 3 pôles: $1$ (d'ordre 2) et $\pm 2i$ (d'ordre 1)
+	\\{\it cas 1:} $1 \in int \gamma$ et la formule intégrale de Cauchy nous donne
+	\\
+	$n=1$ et $z=1$
+	$f'(z)=\frac{1}{2\pi i}\oint_{\gamma}\frac{e^{\xi^2}}{(\xi-1)^2(\xi-2i)(\xi+2i)}\,d\xi$
+	\\avec $f(z)=\frac{e^{z^2}}{z^2+4}$ 
+	et $f'(z)=\frac{2ze^{z^2}(z^2+3)}{(z^2+4)^2}$
+	\\et donc $2\pi if'(z)=\oint_{\gamma}\frac{e^{\xi^2}}{(\xi-1)^2(\xi-2i)(\xi+2i)}\,d\xi=\frac{16}{25}e\pi i$
+	\\\\
+	{\it Cas 2:} $2i \in \gamma$ et donc avec $n=0$, $z=2i$ et $f(z)=\frac{e^{z^2}}{(z-1)(z^2+2i)}$ 
+	\\et donc $2\pi if(2i)=\oint_{\gamma}\frac{e^{\xi^2}}{(\xi-1)^2(\xi-2i)(\xi+2i)}\,d\xi=-\frac{e^{-4}}{2(3+4i)}$
+	\\\\
+	{\it Cas 3:} dans ce cas, la fonction est holomorphe dans $\overline{int \gamma}$ ($\pm 2i,1\notin \gamma$) et donc: $\oint_\gamma \frac{e^{z^2}}{(z-1)^2(z^2+4)}\,dz=0$
+ 
+\end{myExample}

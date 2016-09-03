@@ -1,0 +1,135 @@
+\chapter[Opérateurs différentiels de la physique]{Opérateurs différentiels de la physique}
+
+\section{Généralités}
+
+\begin{myDefinition} {\bf Gradient} de f\\
+	$grad f(x)=\nabla f(x)=(\frac{\partial f}{\partial x_1}(x), ...,\frac{\partial f}{\partial x_n}(x))\in\R^n$
+	\\\\
+	pour $f\in \C^1$ et $n\geq2$
+\end{myDefinition}
+
+\begin{myDefinition} {\bf Divergence} de F\\
+	Soit $F(x)=(F_1(x),...,F_n(x)), F \in \C^1$
+	\\\\
+	$div F(x)=\nabla \cdot F(x)=\sum_{i=1}^{n}\frac{\partial f}{\partial x_i}(x) \in \R$
+\end{myDefinition}
+
+\begin{myDefinition} {\bf Rotationnel} de F
+	\begin{enumerate}
+		\item si $n=2$ et si $F(x)=(F_1(x),F_2(x))$, $F\in \C^1$
+		\\\\
+		$rot F(x)=\nabla \times F(x)=\frac{\partial F_2}{\partial x_1}(x)-\frac{\partial F_1}{\partial x_2}(x) \in \R$
+		\item si $n=3$ et si $F(x)=(F_1(x), F_2(x), F_3(x))$, $F\in C^1$
+		\\\\
+		$rot F(x)=(\frac{\partial F_3}{\partial x_2}(x)-\frac{\partial F_2}{\partial x_3}(x),\frac{\partial F_1}{\partial x_2}(x)-\frac{\partial F_3}{\partial x_1}(x),\frac{\partial F_2}{\partial x_1}(x)-\frac{\partial F_1}{\partial x_2}(x)) \in \R^3$
+		\\
+		ou
+		\\
+		$rot F(x)=\nabla \times F(x)=
+		\begin{vmatrix}
+		e_1&e_2&e_3
+		\\
+		\frac{\partial}{\partial x_1}&\frac{\partial}{\partial x_2}&\frac{\partial}{\partial x_3}
+		\\
+		F_1&F_2&F_3
+		\end{vmatrix}$
+	\end{enumerate}
+\end{myDefinition}
+
+\begin{myDefinition} {\bf Laplacien} de f\\
+	$\Delta f(x)=\nabla \cdot \nabla f(x)=\sum_{i=1}^{n}\frac{\partial^2f}{\partial x_i^2}\in\R$
+	\\\\
+	pour $f\in \C^2$
+\end{myDefinition}
+
+{\bf Remarques:} Le {\bf gradient} et le {\bf Laplacien} accepte des champs {\bf scalaires} comme argument, tandis que les {\bf divergences} et {\bf rotationnels} prennent des champs {\bf vectoriels} comme argument.
+
+\begin{myExample}
+	Soit $F(x, y, z) =(y^2\sin(xz), e^y \cos(x^2 + z), \ln(2 + \cos(xy))=(f_1,f_2,f_3)$
+	\\
+	\begin{enumerate}
+		\item Calculer les gradients de $f_1,f_2,f_3$
+		\item $\nabla \cdot F(x,y,z)$
+		\item $\nabla \times F(x,y,z)$
+	\end{enumerate}
+	$\nabla f_1(x,y,z)=(y^2z\cos(xz), 2y\sin(xz),xy^2\cos(xz))$
+	\\
+	$\nabla f_2(x,y,z)=(-2xe^y\sin(x^2+z),  e^y \cos(x^2 + z), -e^y \sin(x^2 + z))$
+	\\
+	$\nabla f_3(x,y,z)=(-\frac{y\sin{(xy)}}{2+\cos(xy)},  -\frac{x\sin{(xy)}}{2+\cos(xy)}, 0)$
+	\\\\
+	$\nabla \cdot F(x)=\frac{\partial f_1}{\partial x}+\frac{\partial f_2}{\partial y}+\frac{\partial f_3}{\partial z}=y^2z\cos(xz)+e^y \cos(x^2 + z)$
+	\\\\
+	$\nabla \times F(x)=
+		\begin{vmatrix}
+			e_1&e_2&e_3
+			\\
+			\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}
+			\\
+			f_1&f_2&f_3
+		\end{vmatrix}
+	=
+		\begin{pmatrix}
+		-\frac{x\sin{(xy)}}{2+\cos(xy)}+e^y \sin(x^2 + z)
+		\\
+		xy^2\cos(xz)+\frac{y\sin{(xy)}}{2+\cos(xy)}
+		\\  
+		-2xe^y\sin(x^2+z)-2y\sin(xz)
+		\\
+		\end{pmatrix}$
+	%=(-\frac{x\sin{(xy)}}{2+\cos(xy)}+e^y \sin(x^2 + z),xy^2\cos(xz)+\frac{y\sin{(xy)}}{2+\cos(xy)},-2xe^y\sin(x^2+z)-2y\sin(xz))$
+\end{myExample}
+
+\begin{myExample}
+	Soit $f(x,y)=g(r(x,y),\theta(x,y))$ et $x=r\cos\theta$ et $y=r\cos\theta$\\
+	Montrer que $\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}=\frac{1}{r}\frac{\partial g}{\partial r}+\frac{\partial^2 g}{\partial r^2}+\frac{1}{r^2}\frac{\partial^2 g}{\partial \theta^2}$
+	\\
+	Calculer ensuite $\Delta f$ pour
+	\\
+	$f(x,y)=\sqrt{x^2+y^2}+(\arctan{\frac{y}{x}})^2$
+	\\\\
+	Tout d'abord on a: $r=\sqrt{x^2+y^2}$ et $\theta=\arctan{\frac{y}{x}}$ avec les dérivées partielles suivantes:
+	\begin{eqnarray*}
+		\frac{\partial r}{\partial x}=\frac{x}{\sqrt{x^2+y^2}}=\frac{x}{r}
+		\\
+		\frac{\partial r}{\partial y}=\frac{y}{r}
+		\\
+		\frac{\partial \theta}{\partial x}=\frac{-y}{x^2+y^2}=\frac{-y}{r^2}
+		\\
+		\frac{\partial \theta}{\partial x}=\frac{x}{r^2}
+		\\
+		\frac{\partial^2 r}{\partial x^2}=\frac{r-x(x/r)}{r^2}=\frac{r^2-x^2}{r^3}
+		\\
+		\frac{\partial^2 r}{\partial y^2}=\frac{r^2-y^2}{r^3}
+		\\
+		\frac{\partial^2 \theta}{\partial x^2}=\frac{2xy}{r^4}
+		\\
+		\frac{\partial^2 \theta}{\partial y^2}=-\frac{2xy}{r^4}
+	\end{eqnarray*}
+	
+	$\frac{\partial f}{\partial x}=\frac{\partial g}{\partial r}\frac{\partial r}{\partial x}+\frac{\partial g}{\partial \theta}\frac{\partial \theta}{\partial x}$
+	\\ et
+	\\
+	$\frac{\partial f}{\partial y}=\frac{\partial g}{\partial r}\frac{\partial r}{\partial y}+\frac{\partial g}{\partial \theta}\frac{\partial \theta}{\partial y}$
+	\\puis
+	\\
+	$\frac{\partial^2 f}{\partial x^2}=\frac{\partial^2 g}{\partial r^2}(\frac{\partial r}{\partial x})^2+\frac{\partial g}{\partial r}\frac{\partial^2 r}{\partial x^2}+\frac{\partial^2 g}{\partial \theta^2}(\frac{\partial \theta}{\partial x})^2+\frac{\partial g}{\partial \theta}\frac{\partial^2 \theta}{\partial x^2}$
+	\\et
+	\\
+	$\frac{\partial^2 f}{\partial y^2}=\frac{\partial^2 g}{\partial r^2}(\frac{\partial r}{\partial y})^2+\frac{\partial g}{\partial r}\frac{\partial^2 r}{\partial y^2}+\frac{\partial^2 g}{\partial \theta^2}(\frac{\partial \theta}{\partial y})^2+\frac{\partial g}{\partial \theta}\frac{\partial^2 \theta}{\partial y^2}$
+	\\
+	puis en remplaçant par les dérivées calculées plus haut
+	\\
+	$\Delta f=$
+	\\
+	$\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}=$
+	\\$\frac{\partial^2 g}{\partial r^2}(\frac{\partial r}{\partial x})^2+\frac{\partial g}{\partial r}\frac{\partial^2 r}{\partial x^2}+\frac{\partial^2 g}{\partial \theta^2}(\frac{\partial \theta}{\partial x})^2+\frac{\partial g}{\partial \theta}\frac{\partial^2 \theta}{\partial x^2}+\frac{\partial^2 g}{\partial r^2}(\frac{\partial r}{\partial y})^2+\frac{\partial g}{\partial r}\frac{\partial^2 r}{\partial y^2}+\frac{\partial^2 g}{\partial \theta^2}(\frac{\partial \theta}{\partial y})^2+\frac{\partial g}{\partial \theta}\frac{\partial^2 \theta}{\partial y^2}=$
+	\\$\frac{1}{r}\frac{\partial g}{\partial r}+\frac{\partial^2 g}{\partial r^2}+\frac{1}{r^2}\frac{\partial^2 g}{\partial \theta^2}$
+	\\\\
+	Deuxième partie:
+	\\
+	$f(x,y)=g(r,\theta)=r+\theta^2$
+	\\
+	$\Delta f=\frac{1}{r}+\frac{2}{r^2}=\frac{1}{\sqrt{x^2+y^2}}+\frac{2}{x^2+y^2}$
+	
+\end{myExample}

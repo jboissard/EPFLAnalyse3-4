@@ -1,0 +1,114 @@
+\chapter[Séries de Laurent]{Séries de Laurent}
+
+\section{Généralités}
+
+\begin{myTheorem}
+	Soit $D \subset \C$ 
+	un domaine simplement connexe, $z_{0} \in D$. Soient $f: D\backslash \{z_{0}\}\rightarrow \C$ une fonction holomorphe, $N \in \N$
+	\\
+	$L_{N} f(z) = \sum_{n=-N}^N c_{n}(z-z_{0})^n$\\$=c_{N}(z-z_{0})^N+...+c_{1}(z-z_{0})+c_{0}+\frac{c_{-1}}{(z-z_{0})}+...+\frac{c_{-N}}{(z-z_{0})^N}$
+	\\
+	\\où
+	\\$c_{n}=\frac{1}{2\pi i}\int_\gamma \frac{f(\xi)}{(\xi-z_{0})^{n+1}}\,d\xi$
+	(en particulier $c_{-1}=\frac{1}{2\pi i}\int_\gamma f(\xi)\,d\xi$)
+	\\
+	\\On a:
+	$L f(z)=f(z)=\sum_{n=-\infty}^\infty c_{n}(z-z_{0})^n=\sum_{n=0}^\infty c_{n}(z-z_{0})^n + \sum_{n=1}^\infty \frac{c_{-n}}{(z-z_{0})^n}$\\
+\end{myTheorem}
+
+\begin{myDefinition}
+	\begin{enumerate}
+		\item L'expression $Lf(z)$ est appelée {\bf Série de Laurent} de f au voisinage de $z_{0}$.
+		\item On appelle {\bf partie régulière} de la série de Laurent 
+		\\$\sum_{n=0}^\infty c_{n}(z-z_{0})^n$
+		\item On appelle {\bf partie singulière} (ou principale) de la série de Laurent 
+		\\$\sum_{n=1}^\infty \frac{c_{-n}}{(z-z_{0})^n}$
+		\item On dit que $z_{0}$ est un {\bf point régulier} pour f(z) si et seulement si la partie singulière de la série de Laurent est zéro.
+		\item On dit que $z_{0}$ est un {\bf pôle d'ordre m} pour f(z) si et seulement si $c_{m}\neq0$ et $c_{k}=0, \forall k \geq m+ 1$ on a alors
+		\\$Lf(z)=\sum_{n=0}^\infty c_{n}(z-z_{0})^n + \frac{c_{-1}}{(z-z_{0})}+...+\frac{c_{-m}}{(z-z_{0})^m}=$\\$\sum_{n=0}^\infty c_{n}(z-z_{0})^n +\sum_{n=1}^m \frac{c_{-n}}{(z-z_{0})^n}$
+		\item On dit que $z_{0}$ est une {\bf singularité essentielle isolée} pour $f(z)$ si et seulement si $c_{-k}\neq0$, pour une infinité de $k$. Dans ce cas
+		\\$Lf(z)=\sum_{n=0}^\infty c_{n}(z-z_{0})^n +\sum_{n=1}^\infty \frac{c_{-n}}{(z-z_{0})^n}$
+		\item On appelle {\bf résidu de f en $z_{0}$} et on note $Res_{z_{0}}(f)$, la valeur $c_{1}$
+		\item Le {\bf rayon de convergence} de la série est le plus grand $R>0$ tel que $\{z\in \C:|z-z_{0}|<R\} \subset D$
+	\end{enumerate} 
+	
+	{\bf Remarque} Si $f: D \rightarrow \C$ est holomorphe, alors le développement de Laurent coïncide avec la {\bf série de Taylor}, c'est-à-dire que $c_{n}=\frac{f^{(n)}(z_{0})}{n!}$ et
+	\\$Lf(z)=Tf(z)=\sum_{n=0}^{\infty}\frac{f^{(n)}(z_{0})}{n!}(z-z_{0})^n$
+	
+\end{myDefinition}
+
+Dans les exemples qui suivent, il s'agira de trouver les séries de Laurent correspondantes.
+\begin{myExample}
+	$f(z)=\frac{1}{z}$ et $z_{0}=0$
+	\\\\
+	On cherche quelque chose de la forme $Lf(z)=\sum a_{n}(z-z_{0})^n$
+	\\
+	On a immédiatement $Lf(z)= \frac{1}{z} + 0$
+	\\
+	$R=\infty$,$Res_{z_{0}}=1$, $z_{0}$ est un pôloe d'ordre 1, la partie singulière est $1/z$ et la partie régulière est $0$.
+\end{myExample}
+
+\begin{myExample}
+	$f(z)=\frac{1}{z}$ et $z_{0}=1$
+	\\\\
+	$f(z)=\frac{1}{1+(z-1)}=\sum_{n=0}^{\infty}(-1)^n(z-1)^n=Lf(z)$
+	\\
+	$R=\infty$, $Res_{z_{0}}=0$ et $z_{0}$ est un point régulier (i.e. il n'y a pas de partie singulière)
+\end{myExample}
+
+\begin{myExample}
+	$f(z)=\frac{1}{z^2+z}$ et $z_{0}$
+	\\\\
+	$\frac{1}{z^2+z}=\frac{1}{z(z+1)}=\frac{1}{z}-\frac{1}{z^2}=\frac{1}{z} - \sum_{n=0}^{\infty}(-1)^nz^n=Lf(z)$
+	\\
+	$R=1$ ($0<|z|<1$), $Res_{z_{0}}=1$ et $z_{0}$ est un pôle d'ordre 1
+\end{myExample}
+
+\begin{myExample}
+	$f(z)=\frac{1}{z(z+2)^3}$ pour $z_{1}=0$ et $z_{2}=-2$
+	\\\\
+	Cas $z_{1}=0$:
+	\\
+	$\frac{1}{z(z+2)^3}=\frac{1}{8z}\frac{1}{(\frac{z}{2}+1)^3}$ et on sait $(1+x)^p=1+px+\frac{p(p-1)}{2!}x^2+\frac{p(p-1)(p-2)}{3!}x^3+...$
+	\\
+	$Lf(z)=\frac{1}{8z}(1-3\frac{z}{2}+\frac{12}{2!}(\frac{z}{2})^2-\frac{60}{3!}(\frac{z}{2})^3+...)=\frac{1}{8z}-\frac{3}{16}+\frac{3}{16}z-\frac{5}{32}z^2+...$
+	\\
+	$R=2$, $Res_{z_{1}}=\frac{1}{8}$, $z_{1}$ est un pôle d'ordre 1
+	\\
+	\\
+	Cas $z_{2}=-2$: 
+	\\
+	on fait la substitution $u=z-z_{0}=z+2$
+	\\
+	$\frac{1}{(u-2)u^3}=\frac{1}{8u}\frac{1}{(\frac{u}{2}+1)^3}=-\frac{1}{2u^3}\sum_{n=0}^{\infty}(-1)^n(\frac{u}{2})^n
+	=\sum_{n=0}^{\infty}(-1)^{n+1}\frac{u^{n-3}}{2^{n+1}}=\sum_{n=0}^{\infty}(-1)^{n+1}\frac{(z+2)^{n-3}}{2^{n+1}}$
+	\\
+	$R=2$, $Res_{z_{2}}=-\frac{1}{8}$ et $z_{2}$ est un pôle d'ordre 3
+	
+\end{myExample}
+
+\begin{myExample}
+	$f(z)=e^{1/z}\sin 1/z$ en $z_{0}=0$
+	\\\\
+	On pose $y=\frac{1}{z}$ et donc $f(y)=e^y\sin y$
+	\\
+	Le développement de {\bf Taylor} nous donne 
+	\begin{enumerate}
+		\item
+		$f'(y)=e^y(\sin y+\cos y)$  et  $f'(0)=1$
+		\item
+		$f''(y)=e^y(2\cos y)$ et $f''(0)=2$
+		\item
+		$f^3(y)=e^y(2\cos y - 2\sin y)$ et $f^3(0)=2$
+		\item
+		$f^4(y)=e^y(4\sin y)$ et $f^4(0)=0$
+		\item
+		$f^5(y)=e^y(4\cos y)$ et $f^5(0)=4$
+	\end{enumerate}
+	
+	$Tf(y)=y+y^2+\frac{y^3}{3}+\frac{y^5}{30}+...$
+	\\et donc
+	$Lf(z)=\frac{1}{z}+\frac{1}{z^2}+\frac{1}{3z^3}+\frac{1}{30z^5}+...$
+	\\
+	$R=\infty$, $Res_{z_{0}}=1$ et $z_{0}$ est une singularité isolée pour f.
+\end{myExample}

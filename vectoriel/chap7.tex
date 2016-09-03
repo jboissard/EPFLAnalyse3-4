@@ -1,0 +1,198 @@
+\chapter[Théorème de Stokes]{Théorème de Stokes}
+
+\section{Généralités}
+
+\begin{myTheorem} {\bf Théorème de Stokes}
+	\\Soit $\Sigma\subset\R^3$ une surface régulière par morceaux et orientable. Soit $F:\Sigma\rightarrow\R^3,F=(F_1,F_2,F_3)$, où les $F_i$ sont $C^1$ sur un ouvert contenant $\Sigma\cup\partial\Sigma$, alors
+	\begin{eqnarray*}
+		\iint_\Sigma \mathrm{rot}F\cdot ds=\int_{\partial\Sigma} F\cdot dl
+	\end{eqnarray*}
+	{\bf Remarques}
+	\begin{enumerate}
+		\item pour toutes les surfaces régulières par morceaux $\Sigma \subset\R^3$, avec paramétrisation $\sigma=\sigma(u,v):\overline{A}\rightarrow\Sigma$, que nous considérons, le bord de $\Sigma$, noté $\partial\Sigma$, est donné par $\sigma(\partial A)$ où on a enlevé les parties qui sont parcourues deux foisdans des sens opposés ainsi que les points
+		\item Une fois la paramétrisation choisie $\sigma:\overline{A}\rightarrow\Sigma$, la normale $\sigma_u\wedge\sigma_v$, c'est-à-dire
+		\begin{eqnarray*}
+			\iint_\Sigma \mathrm{rot}F\cdot ds=\iint_A (\mathrm{rot}F(\sigma(u,v))\cdot\sigma_u\wedge\sigma_v)\,dudv
+		\end{eqnarray*}
+		Par ailleurs le sens de parcours de $\partial\Sigma$ est alors celui induit par la paramétrisation $\sigma:\overline{A}\rightarrow\Sigma$ et c'est donc celui obtenu en parcourant positivement $\partial A$
+	\end{enumerate}
+\end{myTheorem}
+
+\begin{myExample} Vérifier le théorème de Stokes pour $F(x,y,z)=(z,y,x)$ et
+	\begin{eqnarray*}
+		\Sigma=\{(x,y,z)\in\R^3:z^2=x^2+y^2\,\,et\,\,0<z<1\}
+	\end{eqnarray*}
+	\begin{enumerate}
+		\item 
+			Calcul de $\iint_\Sigma\mathrm{rot}F\cdot ds$
+			\\
+			on a
+			\begin{eqnarray*}
+				\nabla\times F = 
+				\begin{vmatrix}
+					e_1&e_2&e_3
+					\\
+					\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}
+					\\
+					z&x&y
+				\end{vmatrix}=
+				(1,1,1)
+			\end{eqnarray*}
+			Pour la paramétrisation, on a
+			\begin{eqnarray*}
+				\sigma(\theta,z)=(z\cos\theta,z\sin\theta,z)\,\,
+				avec
+				\,\,
+				(\theta,z)\in A=(0,2\pi)\times(0,1)
+			\end{eqnarray*}
+			la normale est donnée par
+			\begin{eqnarray*}
+				\sigma_\theta\wedge\sigma_z=
+				\begin{vmatrix}
+					e_1&e_2&e_3
+					\\
+					-z\sin\theta&z\cos\theta&z
+					\\
+					\cos\theta&\sin\theta&1
+				\end{vmatrix}=
+				(z\cos\theta,z\sin\theta,-z)
+			\end{eqnarray*}
+			On peut maintenant passer au calcul de l'intégrale
+			\begin{eqnarray*}
+				\iint_\Sigma\mathrm{rot}F\cdot ds=
+				\\
+				\int_{0}^{2\pi}\int_{0}^{1}(1,1,1)\cdot(z\cos\theta,z\sin\theta,-z)\,dzd\theta
+				\\
+				\int_{0}^{2\pi}\int_{0}^{1}z\cos\theta+z\sin\theta-z\,dzd\theta
+				\\
+				\int_{0}^{1}z\,dz\int_{0}^{2\pi}\cos\theta+\sin\theta-1\,d\theta
+				\\
+				\frac{1}{2}\cdot(-2\pi)=
+				\\
+				-\pi			
+			\end{eqnarray*}
+		\item
+			Calcul de $\int_{\partial\Sigma}F\cdot dl$
+			\\
+			Commençons par calculer
+			\begin{eqnarray*}
+				\sigma(\partial A)=\Gamma_1\cup\Gamma_2\cup\Gamma_3\cup\Gamma_4
+			\end{eqnarray*}
+			où
+			\begin{eqnarray*}
+				\Gamma_1=\{\gamma_1(\theta)=\sigma(\theta,0)=(0,0,0)\}={(0,0,0)}
+				\\
+				\Gamma_2=\{\gamma_2(z)=\sigma(2\pi,z)=(z,0,z),z:0\rightarrow 1\}
+				\\
+				\Gamma_3=\{\gamma_3(\theta)=\sigma(\theta,1)=(\cos\theta,\sin\theta,1),\theta:2\pi\rightarrow 0\}
+				\\
+				\Gamma_4=\{\gamma_4(z)=\sigma(0,z)=(z,0,z),z:1\rightarrow 0\}=-\Gamma_2
+			\end{eqnarray*}
+			On remarque que
+			\begin{eqnarray*}
+				\partial\Sigma=\Gamma_3
+			\end{eqnarray*}
+			et on a $\gamma_3'(\theta)=(-\sin\theta,\cos\theta,0)$
+			On trouve donc
+			\begin{eqnarray*}
+				\int_{\partial\Sigma}F\cdot dl=
+				\\
+				\int_{2\pi}^{0}(1,\cos\theta,\sin\theta)\cdot(-\sin\theta,\cos\theta,0)\,d\theta=
+				\\
+				\int_{2\pi}^{0}-\sin\theta+\cos^2\theta\,d\theta=
+				\\
+				\left[\frac{1}{2}\theta+\frac{\sin2\theta}{4}\right]_{2\pi}^0=
+				\\
+				-\pi
+			\end{eqnarray*}
+	\end{enumerate}
+	On a bien vérifié le théorème de Stokes dans ce cas.
+\end{myExample}
+
+\begin{myExample}
+Vérifier le théorème de Stokes pour $F(x,y,z)=(0,0,y^2)$ et
+	\begin{eqnarray*}
+		\Sigma=\{(x,y,z)\in\R^3:x^2+y^2+z^2=1\,\,et\,\,z\leq 0\}
+	\end{eqnarray*}
+	\begin{enumerate}
+		\item 
+			Calcul de $\iint_\Sigma\mathrm{rot}F\cdot ds$
+			\\
+			on a
+			\begin{eqnarray*}
+				\nabla\times F = 
+				\begin{vmatrix}
+					e_1&e_2&e_3
+					\\
+					\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}
+					\\
+					0&0&y^2
+				\end{vmatrix}=
+				(2y,0,0)
+			\end{eqnarray*}
+			On paramétrise de la façon suivante
+			\begin{eqnarray*}
+				\sigma(\theta,\phi)=(\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)
+			\end{eqnarray*}
+			avec $(\theta,\phi)\in A=(0,2\pi)\times(\frac{\pi}{2},\pi)$
+			\\On a la normale suivante
+			\begin{eqnarray*}
+				\sigma_\theta\wedge\sigma_\phi=
+				\begin{vmatrix}
+					e_1&e_2&e_3
+					\\
+					-\sin\theta\sin\phi&\cos\theta\sin\phi&0
+					\\
+					\cos\theta\cos\phi&\sin\theta\cos\phi&-\sin\phi
+				\end{vmatrix}=
+				\\
+				-\sin\phi\,\sigma(\theta,\phi)
+			\end{eqnarray*}
+			On peut maintenant calculer l'intégrale
+			\begin{eqnarray*}
+				\iint_\Sigma\mathrm{rot}F\cdot ds=
+				\\
+				\int_{\frac{\pi}{2}}^\pi\int_{0}^{2\pi}(2\sin\theta\sin\phi,0,0)\cdot-\sin\phi\,\sigma(\theta,\phi)\,d\theta d\phi=
+				\\
+				\int_{\frac{\pi}{2}}^\pi\int_{0}^{2\pi}-2\sin\theta\cos\theta\sin^3\phi\,d\theta d\phi=
+				\\
+				-2\int_{\frac{\pi}{2}}^\pi\sin^3\phi\,d\phi\int_{0}^{2\pi}\sin\theta\cos\theta\,d\theta=
+				\\
+				-2\int_{\frac{\pi}{2}}^\pi\sin^3\phi\,d\phi\left[\frac{\sin^2\theta}{2}\right]_{0}^{2\pi}=
+				\\
+				0
+			\end{eqnarray*}
+		\item
+			Calcul de $\int_{\partial\Sigma}F\cdot dl$
+			\\
+			Commençons par calculer
+			\begin{eqnarray*}
+				\sigma(\partial A)=\Gamma_1\cup\Gamma_2\cup\Gamma_3\cup\Gamma_4
+			\end{eqnarray*}
+			où
+			\begin{eqnarray*}
+				\Gamma_1=\{\gamma_1(\theta)=\sigma(\theta,\frac{\pi}{2})=(\cos\theta,\sin\theta,0),\theta:0\rightarrow 2\pi\}
+				\\
+				\Gamma_2=\{\gamma_2(\phi)=\sigma(2\pi,\phi)=(\sin\phi,0,\cos\phi),\phi:\frac{\pi}{2}\rightarrow \pi\}
+				\\
+				\Gamma_3=\{\gamma_3(\theta)=\sigma(\theta,\pi)=(0,0,-1)\}=\{(0,0,-1)\}
+				\\
+				\Gamma_4=\{\gamma_4(\phi)=\sigma(0,\phi)=(\sin\phi,0,\cos\phi),\phi:\pi \rightarrow \frac{\pi}{2}\}=-\Gamma_2
+			\end{eqnarray*}
+			On remarque que
+			\begin{eqnarray*}
+				\partial\Sigma=\Gamma_1
+			\end{eqnarray*}
+			et on a $\gamma_3'(\theta)=(-\sin\theta,\cos\theta,0)$
+			On trouve donc
+			\begin{eqnarray*}
+				\int_{\partial\Sigma}F\cdot dl=
+				\\
+				\int_{0}^{2\pi}(0,0,\sin^2\theta)\cdot(-\sin\theta,\cos\theta,0)\,d\theta=
+				\\
+				\int_{0}^{2\pi}\sin^2\theta\cdot 0\,d\theta=
+				\\
+				0
+			\end{eqnarray*}
+	\end{enumerate}
+\end{myExample}

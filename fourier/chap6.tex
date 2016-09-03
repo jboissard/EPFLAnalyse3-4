@@ -1,0 +1,337 @@
+\chapter{Les distributions tempérées}
+\section{Introduction}
+\begin{itemize}
+	\item O. Heaviside 1894
+	\item P. Dirac 1925
+	\item L. Schwartz 1945
+\end{itemize}
+\underline{Une motivation:} décrire mathématiquement un \underline{choc} (impulsion forte de courte durée).
+
+\underline{Exemple:} Objet de masse $1$, mis en mouvement par un coup de marteau.
+\begin{eqnarray}
+	v(t)=\text{vitesse de la masse à l'instant } t
+	\\
+	1\cdot v'(t)=\text{force}=f_\epsilon(t)=\begin{cases}
+		0&\text{ si }t<0
+		\\
+		\frac{1}{\epsilon}&\text{ si }0<t<\epsilon
+		\\
+		0&\text{ si }t>\epsilon
+	\end{cases}
+\end{eqnarray}
+
+
+%todo deux graph ici
+
+Une \underline{impulsion} serait un objet mathématique $\delta$ tel que la solution de $y'(t)=\delta(t)$ $t\in \mathbb R$ est
+\begin{eqnarray}
+	y(t)=
+	\begin{cases}
+		0&\text{ si } t<0
+		\\
+		1&\text{ si } t>0
+	\end{cases}
+\end{eqnarray}
+%graph ici
+Il n'ya pas de fonction avec cette propriété!
+\section{Interactions entre fonctions}
+\subsection{Concept classique}
+$f:\mathbb R\rightarrow\mathbb R$ est déterminé par les valeurs $f(x)$ $x\in\mathbb R$
+\subsection{Concept nouveau}
+les fonctions interragissent entre elles par l'intermédiare du produit scalaire
+\begin{eqnarray}
+	<f,g>=\int_{-\infty}^{\infty}f(x)g(x)dx
+\end{eqnarray}
+\subsubsection{Ces deux concepts sont proches}
+Si $f$ est continue et intégrable, alors les valeurs de $f$ sont déterminés par la donné de
+\begin{eqnarray*}
+	<f,g>, \,g\text{ bornée}
+\end{eqnarray*}
+Problème dans la définition de $<f,g>$: l'intégrale ne converge pas forcément.
+
+On va se restreindre à 2 classes de fonctions, une pour $f$, l'autre pour $g$
+\subsection{L'espace $\mathop S$ des fonctions à décroissance rapide (espace de Schwartz)}
+\underline{Définition:} $\mathcal S$ est l'espace vectoriel des fonctions $\varphi\in C^{\infty}$ de $\mathbb R$ dans $\begin{cases}
+	\mathbb R\\
+	\mathbb C
+\end{cases}$ telles que, pour tout $n\in\mathbb N$ et $m\in\mathbb N$,
+\begin{eqnarray}
+	\lim_{x\rightarrow \pm\infty} x^n\varphi^{m}(x)
+\end{eqnarray}
+cette condition signifie que $\varphi$ et toutes ses dérivées tendent vers $0$ très rapidement (plus rapidement que $\frac{1}{x^n}$ avec $n\in\mathbb N$)
+\subsubsection{Exemples}
+\begin{enumerate}
+	\item $\varphi(x)=e^{-x^2}$, alors $\lim_{x\rightarrow \pm\infty}x^ne^{-x^2}=0$
+	
+	
+	\item $\Phi=
+	\begin{cases}
+		0&\text{si }x\leq0
+		\\
+		e^{-\frac{1}{x}}&\text{si }x>0
+	\end{cases}$
+	
+	\item Soit $a<b$, posons $p(x)=\Phi(x-a)\Phi(x-b)=
+	\begin{cases}
+		\exp{(-\frac{b-a}{(x-a)(x-b)})}&\text{si }x\in[a,b]
+		\\
+		0&\text{sinon }%x\leq a
+	\end{cases}$
+\end{enumerate}
+
+\subsection{Fonctions à croissance lente continue (CCL)}
+\underline{Définition:} (a) une fonction CCL est une fonction
+$
+	f:\mathbb R\rightarrow
+	\begin{cases}
+		\mathbb R
+		\\
+		\mathbb C
+	\end{cases}$ telle qu'il existe $n\in\mathbb N$ tel que
+	\begin{eqnarray*}
+		\lim_{x\rightarrow\pm\infty}\frac{f(x)}{x^n}=0
+	\end{eqnarray*}
+	(pour un certain $n\in\mathbb N$, $f(x)$ grandit moins vite que $x^n$, lorsque $x\rightarrow\pm\infty$)
+	
+\subsubsection{Exemples}
+\begin{enumerate}
+	\item $x^4+x^2+x$\\
+	$\sin{x},\cos(x)$\\
+	$\ln{(|x|)}$ sont CCL
+	
+	\item $f(x)=e^x$ n'est \underline{pas} CCL, car $\lim_{x\rightarrow\infty}=\infty$
+\end{enumerate}
+\section{Les distributions tempérées}
+\underline{Définition: } (b) une fonctionelle sur $\mathcal S$ est une application linéaire $T: \varphi\rightarrow
+\begin{cases}
+	\mathbb R
+	\\
+	\mathbb C
+\end{cases}$
+définie par
+\begin{eqnarray}
+	\label{eq:deffourierchap6fccl}
+	<T_f,\varphi>=\int_{-\infty}^{\infty}f(x)\varphi(x)dx&\varphi\in\mathcal S
+\end{eqnarray}
+Cette intégrale (eq:\ref{eq:deffourierchap6fccl}) est toujours bien définie.
+
+\underline{Définiton:} On appelle $T_f$ la \underline{fonctionelle associée} à $f$, donc on écrit
+\begin{eqnarray}
+	<f,\varphi>=\int_{-\infty}^{\infty}f(x)\varphi(x)dx
+\end{eqnarray}
+
+\underline{Définition: }
+une distribution tempérée (ou distribution de Schwartz) est fonctionelle $T_f^{(n)}:\varphi\rightarrow
+\begin{cases}
+	\mathbb R
+	\\
+	\mathbb C
+\end{cases}$
+de la forme
+\begin{eqnarray}
+	<T_f^{(n)},\varphi>=(-1)^n\int_{-\infty}^{\infty}f(x)\varphi^{(n)}(x)dx
+\end{eqnarray}
+où $\varphi^n(x)$ est la $n^{\text{ème}}$ dérivée de $\varphi$, $n\in\mathbb N$
+\\
+où $f$ est CCL.
+
+L'ensemble des distributions tempérées est noté $\mathcal S'$. 
+
+\underline{Remarques:}
+$T_f^{(0)}=T_f$: $T_f^{(0)}$ est identifiée à $f$.
+
+\underline{Proposition:} (lien entre $T_f^{(1)}$ et $f$)
+
+Supposons que $f'$ est aussi CCL, Alors $T_f^{(1)}=T_{f'}$, $T_f^{(1)}$ peut être identifiée à $f'$.
+%il y a une démonstration ici
+
+\underline{Interprétation}
+\begin{enumerate}
+	\item $T_f^{(1)}$ est appelée la \underline{dérivée} (au sens des distributions) de $T_f$ et même de $f$.
+	\item Si $f\in C^{(n)}$ et $f',f'',f^{(n)}$ CCL, alors
+	\begin{eqnarray*}
+		<T_f^{(n)},\varphi'>=<f^{(n)},\varphi>=\int_{-\infty}^{\infty}f^{(n)}\varphi(x)dx
+	\end{eqnarray*}
+	\item On écrit $(T_f)'=T_f^{(1)}=f'$, $(T_f)''=T_f^{(2)}=(T_f')'=f''$, étant entendu que dans ce cas, $f_1,f_2,\dots,\text{etc...}$ représentent des distributions.
+\end{enumerate}
+
+\subsection{La distribution $\mathcal S$}
+
+\underline{Définition:}
+
+Soit $\varphi\rightarrow\in R$ définie par $<\delta,\varphi>=\varphi(0)$, $\varphi\in\mathcal S$
+
+On appelle $\delta$ la \underline{fonctionelle de Dirac}.
+
+\underline{Proposition:} 
+
+Posons $r(x)=
+\begin{cases}
+	0&\text{si }x<0
+	\\
+	x&\text{si }x\geq0
+\end{cases}$
+%mettre plot ici
+
+$H(x)=
+\begin{cases}
+	0&x<0
+	\\
+	1&x\geq0
+\end{cases}$
+
+Alors $r'=H$ et $r''=H'=\delta$, c'est-à-dire
+\begin{eqnarray*}
+	\int_{-\infty}^{\infty}r(x)\varphi'(x)dx=\int_{-\infty}^{\infty}H(x)\varphi(x)dx
+\end{eqnarray*}
+et
+\begin{eqnarray*}
+	(-1)^2\int_{-\infty}^{\infty}r(x)\varphi''(x)dx=\int_{-\infty}^{\infty}H(x)\varphi'(x)dx=<\delta,\varphi>=\varphi(0)
+\end{eqnarray*}
+
+Démonstration: cf exercices
+
+\underline{Remarques:}
+
+$H'=\delta$
+\begin{eqnarray*}
+	H(t)=
+	\begin{cases}
+		0&\text{si }t<0
+		\\
+		1&\text{ si }t\geq0
+	\end{cases}
+\end{eqnarray*}
+$\delta$ est l'objet mathématique qui correspond à la notion d'impulsion.
+
+(b) On peut montrer que $\delta$ est la limite des fonctions $f_\epsilon$ dans l'exemple de la première heure.
+
+\section{Transformée de Fourier d'une distribution tempérée}
+
+\underline{Définition:}
+
+Soit $T\in\mathcal S'$. La transformée de Fourier de $T$ est l'élément $\mathcal F_T$ de $\varphi'$ défini par $<\mathcal F_T,\varphi>=<T,\mathcal F_\varphi>$, où $\varphi\in\mathcal S$.
+
+\underline{Remarques:}
+\begin{enumerate}
+	\item On peut montrer que si $\varphi\in\mathcal S$, alors $\mathcal F_\varphi\in\mathcal S$ (où $\mathcal F_\varphi=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\varphi(x)e^{-i\alpha x}$).
+	\item Si $f:\mathbb R\rightarrow\mathbb R$ est telle que
+	\begin{eqnarray*}
+		\int_{-\infty}^\infty|f(x)|dx<+\infty
+	\end{eqnarray*}
+	ce qui signifie que $\mathcal F f$ est défini comme au sens du chapitre \ref{chap:FourierTrans}, alors
+	\begin{eqnarray}
+		<\mathcal F f,\varphi>=<f,\mathcal F\varphi> 
+	\end{eqnarray}
+\end{enumerate}
+de sorte que $T_{\mathcal F_f}=\mathcal F(T_f)$.
+
+\textbf{Proposition} Pour $a\in\mathbb R$, définissons $\delta_a:\mathcal S\rightarrow\mathbb R$ par
+\begin{eqnarray}
+	<\delta_a,\varphi>=\varphi(a)
+\end{eqnarray}
+(en particulier, $\delta_0$ est la distribution de Dirac $\delta$). Alors:
+\begin{enumerate}
+	\item $\mathcal F\delta_a$ est la distribution associée à la fonction CCL $x\mapsto\frac{1}{\sqrt{2\pi}}e^{-iax}$. 
+En particulier, $\mathcal F\delta$ est la fonction constante égale à $\frac{1}{\sqrt{2\pi}}$: $\mathcal F\delta=\frac{1}{\sqrt{2\pi}}$;
+\item $\mathcal F(e^{iax})=\sqrt{2\pi}\delta_a$;
+\item $\mathcal F (\cos (x))=\sqrt{\frac{\pi}{2}}(\delta_1+\delta_{-1})$
+\item $\mathcal F (\sin (x))=i\sqrt{\frac{\pi}{2}}(\delta_{-1}-\delta_{1})$
+\end{enumerate}
+
+\section{Opérations sur les distributions tempérées}
+\begin{myDefinition}
+	\textbf{Réflection}
+	Etant donné une fonction $f:\mathbb R\rightarrow\mathbb R$, on définit une  nouvelle fonction $f^v:\mathbb R\rightarrow\mathbb R$ par $f^v(x)=f(-x)$ ($f^v$ se lit "$f$ check").
+
+Pour $T\in\mathcal S'$, on définit une nouvelle distribution tempérée $T^v\in\mathcal S'$ par
+\begin{eqnarray}
+	<T^v,\varphi>=<T,\varphi^v> 
+\end{eqnarray}
+%voir polycop pour demonstration
+\end{myDefinition}
+\begin{myDefinition}
+	\textbf{Translation}
+	Etant donné une fonction $f:\mathbb R\rightarrow\mathbb R$, on définit une  nouvelle fonction $\mathcal T_a f:\mathbb R\rightarrow\mathbb R$ par $\mathcal T_af(x)=f(x+a)$
+	
+Pour $T\in\mathcal S'$, on définit une nouvelle distribution tempérée $\mathcal T_aT\in\mathcal S$ par
+\begin{eqnarray}
+	<\mathcal T_aT,\varphi>=<T,\mathcal T_{-a}\varphi> 
+\end{eqnarray}
+\end{myDefinition}
+
+\begin{myDefinition}
+	\textbf{Changement d'échelle}
+	Etant donnés $a\neq0$ et une fonction $f:\mathbb R\rightarrow\mathbb R$, on définit une nouvelle fonction $\mathcal S_af(x)=f(ax)$.
+	
+Pour $T\in\mathcal S'$, on définit une nouvelle distribution tempérée $\mathcal S_aT\in\mathcal T'$ par
+\begin{eqnarray}
+	<\mathcal S_aT,\varphi>=<T,\frac{1}{|a|}\mathcal S_{1/a}\varphi>
+\end{eqnarray}
+\end{myDefinition}
+
+\begin{myDefinition}
+	Multiplication par une fonction $C^\infty CL$ 
+	Une fonction $f:\mathbb R\rightarrow\mathbb C$ est dite $C^\infty$ \emph{à croissance lente} si $f$ est $C^\infty$.
+	
+Nous allons définir le produit d'une fonction $C^\infty CL g$ avec une distribution $T\in\mathcal S'$: on définit $g\cdot T\in\mathcal S'$ par
+\begin{eqnarray}
+	<g\cdot T,\varphi>=<T,g\cdot \varphi>.
+\end{eqnarray}
+\end{myDefinition}
+
+
+\begin{myProposition}
+	Avec les définitions ci-dessus, la transformée de Fourier possède les propriétés suivantes:
+	\begin{enumerate}
+		\item (Linéarité) Pour $a,b\in\mathbb R$ et $T_1,T_2\in\mathbb S'$,
+		\begin{eqnarray}
+			\mathcal F(aT_1+bT_2)=a\mathcal F(T_1)+b\mathcal F(T_2)
+		\end{eqnarray}
+		\item (Transformée de Fourier de dérivées)
+		Soit $T\in\mathbb S'$ et $n\in\mathbb N$. Alors
+		\begin{eqnarray}
+			\mathcal F(T^{(n)})=(ix)^n\mathcal FT 
+		\end{eqnarray}
+		\item (Transformé de Fourier de la translatée) Soit $T\in\mathbb S'$ et $a\in\mathbb R$. Alors
+		\begin{eqnarray}
+			\mathcal F(\mathcal T_aT)=e^{iax}\mathcal FT 
+		\end{eqnarray}
+		ce qui signifie que 
+		\begin{eqnarray}
+			<\mathcal T_aT,\mathcal F\varphi>=<e^{iax}\mathcal FT,\varphi>=<\mathcal FT,e^{iax}\varphi>=<T,\mathcal F(e^{iax}\varphi)> 
+		\end{eqnarray}
+		\item (Transformée de Fourier et changement d'échelle)
+		Soit $T\in\mathbb S'$ et $a\neq0$. Alors
+		\begin{eqnarray}
+			\mathcal F(S_aT)=\frac{1}{|a|}S_{1/a}(\mathcal FT)
+		\end{eqnarray}
+		
+		\item (Dérivée de la transformée de Fourier)
+		Soit $T\in\mathbb S'$. Alors
+		\begin{eqnarray}
+			(\mathcal FT)^{(n)}=(-i)^n\mathcal F(x^nT)
+		\end{eqnarray}
+	\end{enumerate}
+\end{myProposition}
+
+\section{Convolution des distributions tempérées}
+L'objectif ici est de définir le produit de convolution $T_1*T_2$ de deux distributions tempérées $T_1,T_2\in\mathcal S'$.
+
+La proposition suivante présente deux observations concernant des propriétés de la convolution de fonctions.
+\begin{myProposition}
+	\begin{enumerate}
+		\item Si $f:\mathbb R\rightarrow\mathbb R$ est CCL et $\varphi\in\mathcal S$, alors 
+		\begin{eqnarray}
+			(f*\varphi)(x)=<f,\mathcal T_{-x}(\varphi^v)>
+		\end{eqnarray}
+		\item Soit $f:\mathbb R\rightarrow\mathbb R$ intégrable et $g:\mathbb R\rightarrow\mathbb R$ bornée  et $\varphi\in\mathcal S$. Alors
+		\begin{eqnarray}
+			\int_{-\infty}^\infty(g*f)(x)\varphi(x)\,dx=\int_{-\infty}^\infty f(x)(g*\varphi^V)(x)\,dx 
+		\end{eqnarray}
+	\end{enumerate}
+\end{myProposition} 
+%todo a finir
+
+\section{Equations différentielles avec des distributions}
+\end{document}

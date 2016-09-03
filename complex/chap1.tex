@@ -1,0 +1,154 @@
+\chapter[Fonctions complexes]{Fonctions complexes}
+
+\section{Généralités}
+$i^2=\sqrt{-1}$
+
+Tout d'abord on a 
+
+
+En coordonnées cartésiennes:
+\begin{myDefinition}
+$z = x + iy $
+\\
+$f(z)=Re f(z) + iIm f(z) = u(x) + iv(x)$
+\end{myDefinition}
+
+
+où $x$ est la partie réelle du nombre complexe $Re(z)$ et $y$ la partie imaginaire de $z$ $Im(z)$. 
+x,y  $\in $ $\R$ et $z$ définit un nouvel ensemble $\C$, l'ensemble des complexes.
+
+Module de z:
+$|z| = \sqrt{x^2+y^2} = 2$
+
+Argument:
+$\theta = arg(z) + 2k\pi$
+
+Conjugué complexe:
+$\overline{z}=x-iy$ 
+et
+$z\overline{z}=|z|^2=x^2 + y^2$
+
+si $z \neq 0$
+$z^{-1} = \frac{\overline{z}}{{\left| z \right|}^2}$
+
+En coordonnées polaires:
+$z = re^{i\theta} = |z|e^{iarg(z)}$
+
+$e^{iz}=\cos{z} + i\sin{z}$
+
+Identité d'Euler:
+$e^{i\pi} -1 = 0 $
+
+\begin{myTheorem}
+Fromule de De Moivre
+$\left( e^{iz} \right)^n =e^{inz}=\cos{nz} + i\sin{nz}$
+\end{myTheorem}
+
+si $z_{1},z_{2} \neq 0$
+$z_{1}=z_{2} \Leftrightarrow |z_{1}|=|z_{2}|$ et $arg(z_{1})=arg(z_{2})$
+
+Mettre image plan z équivalent à plan $\R^2$
+
+\begin{myExample}
+	fonction exponentielle
+	$z = x + iy$
+	\\
+	$e^z=e^xe^{iy} = e^x(\cos{y} + i\sin{y})$
+	\\
+	$u(x,y)=e^x\cos{y}$
+	\\
+	$v(x,y)=e^x\sin{y}$
+	\begin{itemize}
+		\item $e^z$ est $2\pi i$ périodique
+		\item $e^{z_{1}}e^{z_{2}}=e^{z_{1}+z_{2}}$
+	\end{itemize}
+\end{myExample}
+
+
+
+Quelques fonctions utiles:
+\begin{itemize}
+	\item $\cos{z} = Re\{e^{iz}\} = \frac{e^{iz}+e^{-iz}}{2}$
+	\item $\sin{z} = Im\{e^{iz}\}= \frac{e^{iz}-e^{-iz}}{2i}$
+	
+	\item $\cosh{z} = \frac{e^{z}+e^{-z}}{2}$
+	\item $\sinh{z} = \frac{e^{z}-e^{-z}}{2}$
+	
+\end{itemize}
+
+$\Rightarrow$ Toutes continues
+	
+\section{Fonction logarithme}
+\begin{myDefinition}
+	$\ln(z) = \ln(|z|) + i \left ( arg(z) + 2 \pi k \right )$ $z \in \C^*$
+\end{myDefinition}
+
+\begin{myProperty}
+	\begin{eqnarray*}
+		e^{ln(z)} = e^{ln(|z|)}e^{iarg(z)} = |z|e^{iarg(z)} = z
+		\\
+		ln(e^z)=ln|e^z| + iarg(e^z) = x + iy = z
+		\\
+		ln(ab)=ln(a) + ln(b)
+	\end{eqnarray*}
+\end{myProperty}
+
+$ln(z) =ln|z| + iarg(z)$
+\\
+$u(x,y)=ln|z| = ln(x^2+y^2)$
+\\
+$v(x,y)= arg(z) = \left\{\begin{matrix}  
+\arctan \frac{y}{x} &\mbox{if}\ x > 0, y \in \R 
+\\
+\frac{\pi}{2} &\mbox{if}\ x = 0, y>0 
+\\
+-\frac{\pi}{2} &\mbox{if}\ x = 0, y<0 
+\\
+\pi+\arctan \frac{y}{x} &\mbox{if}\ x <0, y>0
+\\
+-\pi+\arctan \frac{y}{x} &\mbox{if}\ x<0, y<0
+\end{matrix}\right.$
+\\
+et donc
+\\
+
+$v(x,y) = \left\{\begin{matrix}  
+\arctan \frac{y}{x} &\mbox{if}\ x > 0, y \in \R 
+\\ 
+\frac{\pi}{2}-\arctan \frac{x}{y} &\mbox{if}\ x \in \R, y>0
+\\
+\frac{\pi}{2}+\arctan \frac{x}{y} &\mbox{if}\ x \in \R, y<0
+\end{matrix}\right.$
+
+%\begin{myQuote}{Johan \textsc{Boissard}, Auteur de cet aide-mémoire, Hiver 2008}
+%Il y a ceux qui regardent la télé et ceux qui la font.
+%\end{myQuote}
+
+\begin{myExample}
+Résoudre $(z^4-1)sin(\pi z)=0$
+\\
+$z^4-1=0$
+\\
+avec $y = z^2$
+\\
+$y^2 -1=(y-1)(y+1)=0$
+\\
+$y=z^2=\pm 1$ et donc $z^2-1=(z-1)(z+1)=0$ ce qui donne $z=\pm 1$
+\\
+et $z^2+1=(z-i)(z+i)=0$ et donc $z=\pm i$
+\\
+mais on a aussi $sin(\pi z)=0$
+\\
+$sin(z)$ s'annule tous les multiples de $\pi$ donc $z=k$ avec $k \in \Z$
+\\
+finalement $z=\left\{\begin{matrix} k &\mbox{for}\ k \in \Z \\i\\-i\end{matrix}\right.$
+\end{myExample}
+
+
+
+
+
+
+
+
+

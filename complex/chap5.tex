@@ -1,0 +1,161 @@
+\chapter[Théorème des résidus et applications]{Théorème des résidus et applications}
+
+\section{Généralités}
+
+\begin{myTheorem}
+	Soient $D \subset \C$ un domaine simplement connexe, $\gamma$ une courbe simple fermée et régulière par morceaux contenue dans D. Soient $z_{1}, ...,z_{m} \in int \gamma$ ($z_{i}\neq z_{j}$, si $i\neq j$) et $f: D \backslash\{z_{1}, ..., z_{m}\}\rightarrow \C$ une fonction holomorphe, alors
+	\\
+	$\oint_\gamma f(z)\,dz=2\pi i\sum_{k=1}^{m}Res_{z_{k}}(f)$
+\end{myTheorem}
+
+\begin{myProposition}
+	$Res_{z_{0}}(f)=\frac{1}{(m-1)!}\lim_{z \rightarrow z_{0}}\frac{d^{m-1}}{dz^{m-1}}[(z-z_{0})^mf(z)]$
+\end{myProposition}
+
+\begin{myProposition}
+Soit $f(z)=\frac{p(z)}{q(z)}$
+\\
+$Res_{z_{0}}=\frac{p(z_0)}{q'(z_0)}$
+\end{myProposition}
+
+\begin{myExample}
+	Calculer $\oint_\gamma \frac{1}{z}\,dz$
+	\\\\
+	{\it Cas 1:} $0\in int \gamma$
+	\\
+	On a $Res_{0}(f)=1 \Rightarrow \oint_\gamma f(z)\,dz=2\pi i$
+	\\
+	{\it Cas 2:} $0\notin \overline{int \gamma}$
+	\\
+	Le théorème de Cauchy implique $\oint_\gamma f(z)\,dz=0$
+	\\
+	{\it Cas 3:} $0\in \gamma$
+	\\
+	L'intégrale n'est pas bien définie.
+\end{myExample}
+
+\begin{myExample}
+	Calculer $\oint_\gamma \frac{2}{z}+\frac{3}{z-1}+\frac{1}{z^2}\,dz$
+	\\\\
+	Les singularités sont les suivantes: $Res_{0}(f)=2$ et $Res_{1}(f)=3$
+	\\
+	On va distinguer plusieurs cas.
+	\begin{enumerate}
+		\item $0, 1 \in int \gamma$
+		\\
+		$\oint_\gamma f(z)\,dz=2\pi i(2+3)=10\pi i$
+		\item $0\in int \gamma$ et $1\notin \overline{int \gamma}$
+		\\
+		$\oint_\gamma f(z)\,dz=4\pi i$
+		\item $1\in int \gamma$ et $0\notin \overline{int \gamma}$
+		\\
+		$\oint_\gamma f(z)\,dz=6\pi i$
+		\item $0, 1\notin \overline{int \gamma}$
+		\\
+		$\oint_\gamma f(z)\,dz=0$
+		\item $0\in \gamma$ ou $1\in \gamma$
+		\\
+		Dans ce cas l'intégrale n'est pas bien définie
+	\end{enumerate}
+\end{myExample}
+
+\begin{myExample}
+	Calculer $\oint_\gamma \frac{1}{(z-i)(z+2)^3(z-4)}\,dz$ où 	$\gamma = \{Re^{it}: 0\leq t\leq 2\pi\}$
+	\\$R_{1}=3$ et $R_{2}=5$
+	\\\\
+	On calcule les résidus:\\
+	$Res_{i}(f)=\lim_{z\rightarrow i}(z-i)f(z)=\frac{1}{(i+2)^2(i-4)}$
+	\\
+	$Res_{4}(f)=\lim_{z\rightarrow 4}(z-4)f(z)=\frac{1}{36(4-i)}$
+	\\
+	$Res_{-2}(f)=\lim_{z\rightarrow -2}\frac{d}{dz}[(z-2)^2f(z)]=\lim_{z\rightarrow -2}\frac{d}{dz}[\frac{1}{(z-i)(z-4)}]=\lim_{z\rightarrow -2}\frac{d}{dz}[\frac{-2z+4+i}{(z-i)^2(z-4)^2}]=\frac{8+i}{36(i+2)^2}$	
+	\\
+	{\it Cas 1: }$R_{1}=3$
+	\\
+		$4, -2 \in int \gamma \Rightarrow \oint_\gamma f(z)\,dz=2\pi i(Res_4(f)+Res_{-2}(f))=\frac{2\pi i}{i-4}(\frac{1}{(i+2)^2}-\frac{1}{36})$
+	\\
+	{\it Cas 2: }$R_{2}=5$
+	\\
+		$4, -2, i \in int \gamma \Rightarrow \oint_\gamma f(z)\,dz=2\pi i(Res_4(f)+Res_{-2}(f)+Res_i(f))=2\pi i(\frac{1}{(i-4)(i+2)^2}+\frac{8+i}{36(i+2)^2}-\frac{1}{36(i-4)})=0$
+	
+\end{myExample}
+
+\begin{myExample}
+	Calculer $\oint_\gamma \frac{x^2+2z+1}{(x-3)^3}\,dz$ où $\gamma= \{5e^{it}: 0\leq t\leq 2\pi\}$
+	\\\\
+	Tout d'abord que $z_0$ est un pôle d'ordre 3 et que donc
+	\\
+	$Res_3(f)=\lim_{z\rightarrow 3}\frac{1}{2!}\frac{d^2}{dz^2}[(z-3)^3f(z)]=\lim_{z\rightarrow 3} \frac{1}{2!}2=1$
+	\\et donc comme $3\in int\gamma$, $\oint_\gamma f(z)\,dz=2\pi i$
+\end{myExample}
+
+\section{Applications au calcul des intégrales réelles (I)}
+
+\begin{myProperty}
+	$\int_{0}^{2\pi}f(\cos \theta, \sin \theta)\,d\theta$
+	\\\\
+	On pose $z=e^{i\theta}$, on a alors
+	\\
+	$\cos \theta = \frac{1}{2}(e^{i\theta}+e^{-i\theta})=\frac{1}{2}(z+\frac{1}{z})$
+	$\sin \theta = \frac{1}{2i}(e^{i\theta}-e^{-i\theta})=\frac{1}{2i}(z-\frac{1}{z})$
+	\\
+	Noter qu'on a aussi $d\theta=\frac{1}{i}\frac{dz}{z}$
+	\\
+	Par conséquent si $\gamma$ dénote le cercle unité et si on pose
+	\\
+	$\tilde{f}(z)=\frac{1}{iz}f(\frac{1}{2}(z+\frac{1}{z}),\frac{1}{2i}(z-\frac{1}{z}))$
+	\\
+	On déduit du théorème des résidus que
+	\\
+	$\int_\gamma\tilde{f}(z)\,dz=\int_{0}^{2\pi}f(\cos \theta, \sin \theta)\,d\theta=2\pi i\sum_{k=1}^{m} Res_{z_{k}}(\tilde{f})$
+	\\
+	Où $z_k$ sont les singularités de $\tilde{f}$ à l'intérieur du cercle unité $\gamma$.
+\end{myProperty}
+
+\begin{myExample}
+	Calculer $\int_{0}^{2\pi} \frac{d\theta}{2+\cos\theta}$
+	\\\\
+	$f(\cos \theta,\sin \theta)=\frac{1}{2+\cos\theta}$ et
+	\\
+	$\tilde{f}(z)=\frac{1}{iz}\frac{1}{2+\frac{1}{2}(z+\frac{1}{z})}=\frac{2}{i(z^2+4z+1)}=\frac{2}{i(z+2+\sqrt{3})(z+2-\sqrt{3})}$
+	\\Les singularités de $\tilde{f}$ sont $z_1=-(2+\sqrt{3})$ et $z_2=-2+\sqrt{3}$ mais seulement $z_2$, qui est un pôle d'ordre 1, fait partie du cercle unité.
+	\\
+	$Res_{\sqrt{3}-2}(\tilde{f})=\lim_{z\rightarrow \sqrt{3}-2} (z-\sqrt{3}+2)\tilde{f}(z)=\lim_{z\rightarrow \sqrt{3}-2} \frac{2}{i(z+2+\sqrt{3})}=\frac{1}{i\sqrt{3}}$
+	\\
+	$\int_{0}^{2\pi} \frac{d\theta}{2+\cos\theta}=2\pi i \frac{1}{i\sqrt{3}}=\frac{2\pi}{\sqrt{3}}$
+\end{myExample}
+
+\section{Applications au calcul des intégrales réelles (II)}
+\begin{myProperty}
+	Pour calculer des intégrales de la forme: $\int_{-\infty}^{\infty} R(x)e^{iax}\,dx$
+	\\ 
+	avec $a\geq 0$, $R(x)=P(x)/Q(x)$, où $P(x), Q(x)$ sont des polynômes tels que $Q(x)\neq0, \forall x \in \R$ et $degQ-degP\geq2$ ($deg$ dénotant le degré des polynômes)
+	\\
+	dans ce cas, l'intégrale suivante existe:
+	\\
+	$\int_{-\infty}^{\infty}R(x)e^{iax}\,dx=2\pi i\sum_{k=1}^{m}Res_{z_{k}}(R(z)e^{iaz})$
+\end{myProperty}
+
+\begin{myExample}
+	Calculer $\int_{-\infty}^{\infty}\frac{x^2}{16+x^4}\,dx$
+	\\\\
+	On cherche les zéros (complexes) de $Q(x)$
+	\\
+	$z^4+16=0 \Leftrightarrow z^4=16e^{i(\pi+2n\pi)} \Leftrightarrow z=2e^{\frac{i\pi}{4}(1+2n)}, n=0,1,2,3$
+	\begin{eqnarray*}
+		z_0=2e^{\frac{i\pi}{4}}=\sqrt{2}(1+i)
+		\\
+		z_1=2e^{\frac{3i\pi}{4}}=\sqrt{2}(-1+i)
+		\\
+		z_2=2e^{\frac{3i\pi}{4}}=\sqrt{2}(-1-i)
+		\\
+		z_3=2e^{\frac{3i\pi}{4}}=\sqrt{2}(1-i)
+	\end{eqnarray*}
+	On prend que celle qui sont dans le plan supérieur ($Im(z)>0$), c'est-à-dire $z_0$ et $z_1$.
+	\\
+	On calcule les résidus: $Res_{z_{0}}=\frac{P(x)}{Q'(x)}=\frac{z_{0}^2}{4z_0^3}=\frac{1+i}{8i\sqrt{2}}$ et $Res_{z_{1}}=\frac{1-i}{8i\sqrt{2}}$
+	\\
+	et pour finir
+	\\
+	$\int_{-\infty}^{\infty}\frac{x^2}{16+x^4}\,dx=2\pi i(Res_{z_{0}}+Res_{z_{1}})=\frac{\pi\sqrt{2}}{4}$
+\end{myExample}

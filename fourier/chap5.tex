@@ -1,0 +1,147 @@
+%!TEX root = /Users/Johan/Documents/University/Analyse/Latex/ana.tex
+\chapter[Applications: PDE]{Applications aux dérivées partielles}
+\section{Equation de la chaleur}
+\subsection{Barre de longueur finie}
+Soit $a\neq0,L>0, f:[0,L]\rightarrow\mathbb R$, une fonction $C^1$, telle que $f(0)=f(L)=0$. Trouver $u=u(x,t)$ solution de 
+\begin{eqnarray}
+	\label{eq:18.1}
+	\begin{cases}
+		\frac{\partial u}{\partial t}=a^2\frac{\partial^2 u}{\partial x^2}
+		\\
+		u(0,t)=u(L,t)=0 \,t>0
+		\\
+		u(x,0)=f(x) \,x\in(0,L)
+	\end{cases}
+\end{eqnarray}
+
+\subsubsection{\emph{Etape 1} séparation des variables} 
+\begin{eqnarray*}
+	u(x,t)=v(x)w(t)
+\end{eqnarray*}
+Les conditions aux limites deviennent
+\begin{eqnarray*}
+	u(0,t)=v(0)w(t)=u(L,t)=v(L)w(t)=0, \,\forall t \\
+	\Rightarrow v(0)=v(L)=0.
+\end{eqnarray*}
+On peut réécrire l'équation
+\begin{eqnarray*}
+	\begin{cases}
+		\frac{\partial u}{\partial t}=v(x)\frac{dw(t)}{dt}
+		\\
+		\frac{\partial^2 u}{\partial x^2}=\frac{d^2v}{dt^2}w(x)
+	\end{cases}
+\end{eqnarray*}
+d'où
+\begin{eqnarray}
+	\frac{v''(x)}{v(x)}=\frac{w'(t)}{a^2w(t)}=-\lambda 
+\end{eqnarray}
+On s'occupe mantenant de résoudre les systèmes indépendamment
+\begin{eqnarray}
+	\label{eq:18.3}
+	\begin{cases}
+		v''(x)+\lambda v(x)=0
+		\\
+		v(0)=v(L)=0
+	\end{cases}
+\end{eqnarray}
+et
+\begin{eqnarray}
+	w'(t)+a^2\lambda w(t)=0
+\end{eqnarray}
+On a vu %faire cette partie dans chapitre précédent 
+(cf \ref{sub:17.ex3}) que la solution de (\ref{eq:18.3}) est
+\begin{eqnarray}
+	v_n(x)=\sin{(\frac{n\pi}{L}x)}
+	\\
+	\lambda=(\frac{n\pi}{L})^2
+\end{eqnarray}
+La solution de (\ref{eq:18.4}) est obtenue facilement
+\begin{eqnarray}
+	\label{eq:18.4sol}
+	w_n(t)=e^{-a^2\lambda t} 
+\end{eqnarray}
+En remplacant $\lambda$ par $(\frac{n\pi}{L})^2$ dans (\ref{eq:18.4sol}) on obtient
+\begin{eqnarray}
+	u_n(x,t)=v_n(x)w_n(t)=\sin{(\frac{n\pi}{L}x)}e^{-a^2(\frac{n\pi}{L})^2t} 
+\end{eqnarray}
+On peut maintenant écrire
+\begin{eqnarray}
+	u(x,t)=\sum_{n=1}^\infty\alpha_n\sin{(\frac{n\pi}{L}x)}e^{-a^2(\frac{n\pi}{L})^2t} 
+\end{eqnarray} 
+où $\alpha_n$ sont des constantes "quelconques".
+\subsubsection{\emph{Etape 2} conditions initiales}
+On va maintenant choisir ces constantes $\alpha_n$ de manière à satisfaire la condition initiale, $u(x,0)=f(x)$ dans (\ref{eq:18.1}). On doit donc avoir
+\begin{eqnarray}
+	u(x,t)=\sum_{n=1}^\infty\alpha_n\sin{(\frac{n\pi}{L}x)}=f(x)
+\end{eqnarray}
+Il suffit de choisir $\alpha_n$ comme les coefficients de Fourier de la série en sinus, i.e.
+\begin{eqnarray}
+	\label{eq:18coeffFourSin}
+	\alpha_n=\frac{2}{L}\int_0^Lf(y)\sin{(\frac{n\pi}{L}y)}\,dy 
+\end{eqnarray}
+Donc la solution de (\ref{eq:18.1}) est
+\begin{eqnarray}
+	u(x,t)=\sum_{n=1}^\infty\alpha_n\sin{(\frac{n\pi}{L}x)}e^{-a^2(\frac{n\pi}{L})^2t} 
+	%\\\text{où}  \,\,
+%	\alpha_n=\frac{2}{L}\int_0^Lf(y)\sin{(\frac{n\pi}{L}y)}\,dy 
+\end{eqnarray} 
+où $\alpha_n$ est défini comme en (\ref{eq:18coeffFourSin})
+
+\subsection{Barre de longueur infinie}
+Soient $a\neq0$ et $f:\mathbb R\rightarrow\mathbb R$ une fonction $C^1$ telle que
+\begin{eqnarray*}
+	\int_{-\infty}^{\infty}|f(x)|dx<\infty
+	\\
+	et
+	\\
+	\int_{-\infty}^{\infty}|\hat f(\alpha)|d\alpha<\infty
+\end{eqnarray*}
+
+Le problème est de trouver $u=u(x,t)$ solution de
+\begin{eqnarray}
+	\label{eq:18.5}
+	\begin{cases}
+		\frac{\partial u}{\partial t}=a^2\frac{\partial^2u}{\partial t^2}\,t>0,x\in\mathbb R
+		\\
+		u(x,0)=f(x)\,x\in\mathbb R
+	\end{cases}
+\end{eqnarray}
+\subsubsection{\emph{Etape 1} Transformée de Fourier en $x$}
+On appelle
+\begin{eqnarray}
+	v(\xi,t)=\mathcal F(u)(\xi,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}u(y,t)e^{-i\xi y}\,dy
+\end{eqnarray}
+On a, en utilisant les propriétés de la transformée de Fourier
+\begin{eqnarray}
+	\mathcal F(\frac{\partial^2 u}{\partial x^2})(\xi,t)=(i\xi)^2\mathcal F(u)(\xi,t)=-\xi^2v(\xi,t)
+	\\
+	\frac{\partial v}{\partial t}(\xi,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\frac{\partial u}{\partial t}(y,t)e^{-i\xi y}\,dy=\mathcal F(\frac{\partial u}{\partial t})(\xi,t)
+\end{eqnarray}
+On pose
+\begin{eqnarray}
+	\mathcal F(f)(\xi)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(y)e^{-i\xi y}\,dy
+\end{eqnarray}
+En prenant la transformée de Fourier (en $x$) des deux membres de l'équation, on a que (\ref{eq:18.5}) es devenue une équation différentielle ordinaire du premier ordre dans la variable $t$ ($\xi$ jouant le rôle du paramétre).
+\begin{eqnarray}
+	\begin{cases}
+		\frac{\partial v}{\partial t}(\xi,t)=-a^2\xi^2v(\xi,t),\,t>0
+		\\
+		v(\xi,0)=\mathcal F(f)(\xi)
+	\end{cases}
+\end{eqnarray}
+Le problème ci-dessus a comme solution évidente
+\begin{eqnarray}
+	v(\xi,t)=\mathcal F(f)(\xi)e^{-a^2\xi^2t}
+\end{eqnarray}
+
+\subsubsection{\emph{Etape 2}} 
+On applique à la fonction ci-dessus la transformée de Fourier inverse (en $x$), ce qui nous donne comme solution de (\ref{eq:18.5})
+\begin{eqnarray}
+	u(x,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\mathcal F(f)(\xi)e^{i\xi x-a^2\xi^2t}\,d\xi
+\end{eqnarray}
+
+
+
+\section{Equation des ondes}
+
+\section{Equation de Laplace dans un rectangle}

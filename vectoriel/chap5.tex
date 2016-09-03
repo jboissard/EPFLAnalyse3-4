@@ -1,0 +1,108 @@
+\chapter[Intégrales de surfaces]{Intégrales de surface}
+
+\section{Généralités}
+
+\begin{myDefinition}
+	\begin{enumerate}
+		\item Soit $\Sigma\subset\R^3$ une surface régulière (avec $\sigma =\sigma(u,v):\overline{A}\rightarrow\R^3$ une paramétrisation) et $f:\Sigma\rightarrow\R$ un champ scalaire continu, alors on définit l'intégrale du champ scalaire sur $\Sigma$ comme
+		\begin{eqnarray*}
+			\iint_\Sigma fds=\iint_Af(\sigma(u,v))||\sigma_u\wedge\sigma_v||dudv
+		\end{eqnarray*}
+		\item Si $\Sigma$ est une surface régulière par morceaux telle que $\Sigma=\bigcup_{i=1}^{m}\Sigma_i$ avec $\Sigma_i$ régulière alors
+		\begin{eqnarray*}
+			\iint_\Sigma fds=\sum_{i=1}^m\iint_{\Sigma_i}fds
+		\end{eqnarray*}
+	\end{enumerate}
+\end{myDefinition}
+
+\begin{myDefinition}
+	\begin{enumerate}
+		\item Soit $\Sigma\subset\R^3$ une surface régulière orientable (de paramétrisation $\sigma =\sigma(u,v):\overline{A}\rightarrow\R^3$).Soit $F:\Sigma\rightarrow\R^3$ un champ vectoriel continu. On appelle intégrale du champ vectoriel $F$ sur $\Sigma$ dans la direction $\nu=\sigma_u\wedge\sigma_v$ la quantité
+		\begin{eqnarray*}
+			\iint_\Sigma F\cdot ds=\iint_A\left[F(\sigma(u,v))\cdot\sigma_u\wedge\sigma_v\right]dudv
+		\end{eqnarray*}
+		\item Si $\Sigma=\bigcup_{i=1}^{m}\Sigma_i$ avec $\Sigma_i$ régulières, alors
+		\begin{eqnarray*}
+			\iint_\Sigma F\cdot ds=\sum_{i=1}^m\iint_{\Sigma_i}F\cdot ds
+		\end{eqnarray*}
+	\end{enumerate}
+\end{myDefinition}
+\begin{myProperty}
+	Si $f\equiv1 alors$
+	\begin{eqnarray*}
+		Aire(\Sigma)=\iint_\Sigma ds
+	\end{eqnarray*}
+\end{myProperty}
+
+\begin{myExample}
+	Calculer $\iint_\Sigma fds$ où $f(x,y,z)=x^2+y^2+2z$ et  
+	\begin{eqnarray*}
+		\Sigma=\{(x,y,z)\in\R^3:x^2+y^2=1\hspace{3 mm}et\hspace{3 mm}0\leq z\leq1\}
+	\end{eqnarray*}
+	\\\\
+	Tout d'abord on paramétrise la surface: $\sigma(\theta, z)=(\cos \theta, \sin \theta, z)$, il faut ensuite calculer la normale à la surface
+	\begin{eqnarray*}
+		\sigma_\theta \wedge \sigma_z=
+		\begin{vmatrix}
+		e_1&e_2&e_3
+		\\
+		-\sin \theta&\cos\theta&0
+		\\
+		0&0&1
+		\end{vmatrix}
+		=(\cos\theta,\sin\theta,0)
+	\end{eqnarray*}
+	On trouve facilement la norme $||\sigma_\theta \wedge \sigma_z||=1$
+	\\
+	Il reste maintenant à calculer l'intégrale
+	\begin{eqnarray*}
+		\int_0^1\int_0^{2\pi}\cos^2\theta+\sin^2\theta+2zd\theta dz=
+		\\
+		\int_0^1\int_0^{2\pi}1+2zd\theta dz=
+		\\
+		2\pi\int_0^11+2zdz=
+		\\
+		2\pi\left[z+z^2\right]_0^1=4\pi
+	\end{eqnarray*}
+\end{myExample}
+
+\begin{myExample}
+	Calculer $\iint_\Sigma Fds$ où $F(x,y,z)=(0,z,z)$ et  
+	\begin{eqnarray*}
+		\Sigma=\{(x,y,z)\in\R^3:z=6-3x-2y;x,y,z\geq0\}
+	\end{eqnarray*}
+	\\\\
+	On paramètre: $\sigma(x,y)=(x,y,6-3x-2y)$
+	\begin{eqnarray*}
+		\sigma_x \wedge \sigma_y=
+		\begin{vmatrix}
+		e_1&e_2&e_3
+		\\
+		1&0&-3
+		\\
+		0&1&-2
+		\end{vmatrix}
+		=(3,2,1)
+	\end{eqnarray*}
+	On met les bornes en mettant à zéro z puis x, ce qui nous donne $x\in[0,\frac{6-2y}{3}]$ et $y\in[0,3]$
+	\\On peut maintenant calculer l'intégrale.
+	\begin{eqnarray*}
+		\iint_\Sigma Fds=
+		\\
+		\int_0^3\int_0^{\frac{6-2y}{3}}(0,6-3x-2y,6-3x-2y)(3,2,1)dxdy=
+		\\
+		3\int_0^3\int_0^{\frac{6-2y}{3}}6-3x-2ydxdy=
+		\\
+		3\int_0^3\left[6x-\frac{3}{2}x^2-2xy\right]_{0}^{\frac{6-2y}{3}}dy=
+		\\
+		3\int_0^32(6-2y)-\frac{1}{6}(6-2y)^2-\frac{2}{3}(6-2y)ydy=
+		\\
+		3\int_0^312-4y-\frac{1}{6}(6-2y)^2-4y+\frac{4}{3}y^2dy=
+		\\
+		3\left[12y-2y^2-\frac{1}{6}\frac{1}{-6}(6-2y)^3-2y^2+\frac{4}{9}y^3\right]_0^3=
+		\\
+		3\left[36-18+0-18+\frac{4}{9}27-0-0-6-0-0\right]=
+		\\
+		18
+	\end{eqnarray*}
+\end{myExample}

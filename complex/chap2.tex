@@ -1,0 +1,82 @@
+\chapter[Fonctions holomorphes]{Fonctions holomorphes et équations de Cauchy-Riemann}
+
+\section{Généralités}
+
+\begin{myDefinition}
+On dit que 
+$f: O\Rightarrow \C$ est 
+{\bf holomorphe} (ou {\bf analytique complexe}) 
+dans $O$ si $f$ est dérivable 
+$\forall z_{0} \in O$, c'est-à-dire que
+
+$ \lim_{z \to z_{0}} \frac{f(z)}{z-z_{0}}$
+
+existe et est finie. On note la dérivée par $f'(z_{0})$.
+\end{myDefinition}
+
+\begin{myTheorem} 
+Equations de Cauchy-Riemann
+\\
+${ \partial u \over \partial x } = { \partial v \over \partial y } $, 
+${ \partial u \over \partial y } = -{ \partial v \over \partial x } $
+\\
+$f'(z)={\partial u \over \partial x}(x,y) + i{\partial v \over \partial x}(x,y)={\partial v \over \partial y}(x,y) - i{\partial u \over \partial y}(x,y)$
+\end{myTheorem}
+
+\begin{myExample}
+	La fonction $e^{z}$ est holomorphe dans $\C$ et $f'(z)=e^{z}$
+	\\
+	$e^{z}=e^{x}e^{iy}=e^{x}(\cos y + i\sin y)=u(x,y) + iv(x,y)$
+	\\
+	$u(x,y)= e^{x}cos{y}$ et $v(x,y)= e^{x}sin{y}$
+	\\
+	$\left\{\begin{matrix}
+	u_{x}=v_{y}=e^{x}\cos y 
+	\\
+	u_{y}=-v_{x}=- e^{x}\sin y 
+	\end{matrix}\right.$
+	\\
+	et donc $f'(z)=u_{x}+iv_{x}=e^{z}$
+\end{myExample}
+
+\begin{myExample}
+	Montrer que $\cosh{z}=\frac{1}{2}(e^{z}+e^{-z})$ est holomorphe et calculer sa dérivée 
+	\\
+	$\cosh{z}=\frac{1}{2}(e^{x}(\cos{y} +i\sin{y}) +e^{-x}(\cos{y} - i\sin{y}))$
+	\\
+	$u(x,y)=\frac{1}{2}\cos{y}(e^{x}+e^{-x})$ et $v(x,y)=\frac{1}{2}\sin{y}(e^{x}-e^{-x})$
+	\\
+	$u_{x}=\frac{1}{2}\cos{y}(e^{x}-e^{-x}) = v_{y}$
+	\\
+	$u_{y}=-\frac{1}{2}\sin{y}(e^{x}+e^{-x})= -v_{x}$
+	\\
+	Les équations de {\bf Cauchy-Riemann} sont satisfaites.
+	\\
+	$f'(z)=u_{x} + iv_{x} = \frac{1}{2}(e^{x}e^{iy}-e^{-x}e^{-iy})=\frac{1}{2}(e^{z}-e^{-z}) = \sinh{z}$
+	
+\end{myExample}
+
+\begin{myExample}
+	Montrer que les équations de Cauchy-Riemann, en coordonnées polaires, s'écrivent
+	\\
+	$\frac{\partial u}{\partial r}=\frac{1}{r} \frac{\partial v}{\partial \theta}$, 
+	$\frac{\partial v}{\partial r}=-\frac{1}{r} \frac{\partial u}{\partial \theta}$
+	\\
+	Tout d'abord on a:
+	$x=r\cos \theta$ et $y=r\sin \theta$
+	\\
+	$\frac{\partial x}{\partial r}=\cos \theta$,$\frac{\partial x}{\partial \theta}=-r\sin \theta$,
+	$\frac{\partial y}{\partial r}=\sin \theta$ et $\frac{\partial y}{\partial \theta}=r\cos \theta$ 
+	\\
+	$\frac{\partial u}{\partial r}=\frac{\partial u}{\partial x}\frac{\partial x}{\partial r}=\cos \theta \frac{\partial v}{\partial y}$
+	\\
+	$\frac{\partial v}{\partial \theta}=\frac{\partial v}{\partial y}\frac{\partial y}{\partial \theta}=r\cos \theta \frac{\partial v}{\partial y}$
+	\\
+	$\frac{\partial v}{\partial y}	= \frac{1}{r\cos \theta}\frac{\partial v}{\partial \theta}$
+	\\et donc $\frac{\partial u}{\partial r}= \frac{1}{r}\frac{\partial v}{\partial \theta}$
+	\\
+	\\en suivant le même raisonnement mais en partant avec $\frac{\partial u}{\partial y}=\frac{\partial v}{\partial x}$
+	\\on arrive sur $\frac{\partial v}{\partial r}=-\frac{1}{r} \frac{\partial u}{\partial \theta}$
+	
+\end{myExample}
+

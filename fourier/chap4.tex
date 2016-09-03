@@ -1,0 +1,83 @@
+\chapter[Applications: ODE]{Applications aux équations différentielles ordinaires}
+\section{Le problème de Cauchy}
+\begin{myExample}
+	Le problème est de trouver une solution $y=y(t)$ de 
+	\begin{eqnarray}
+		\begin{cases}
+			a_2y''(t)+a_1y'(t)+a_0y(t)=f(t), \,t>0
+			\\
+			y(0)=y_0,\,y'(0)=y_1
+		\end{cases}
+	\end{eqnarray}
+	où $a_0,a_1,a_2,y_0,y_1\in\mathbb R$ sont des constantes données ($a_2\neq0$) et $f:\mathbb R_+\rightarrow\mathbb R$ est donnée ($f(t)=0$, si $t<0$) avec une certaine régularité.
+	
+	En prenant Laplace des deux côtés on obtient
+	\begin{eqnarray}
+		a_2\mathcal L(y'')(z)+a_1\mathcal L(y')(z)+a_0\mathcal L(y)(z)=\mathcal L(f)(z)
+	\end{eqnarray}
+	En utilisant la propriété \ref{prop:laplace_derivee}, on a
+	\begin{eqnarray}
+		a_2(z^2\mathcal L(y)(z)-zy_0-y_1)+a_1(z\mathcal L(y)(z)-y_0)+a_0\mathcal L(y)(z)=\mathcal L(f)(z)
+	\end{eqnarray}
+	En réarrangeant les termes, on obtient
+	\begin{eqnarray}
+		\mathcal L(y)(z)=\frac{\mathcal L(f)(z)+ a_2y_0z+a_2y_1+a_1y_0}{a_2z^2+a_1z+a_0}
+	\end{eqnarray}
+	et donc
+	\begin{eqnarray}
+		y(t)=\mathcal L^{-1}\left(\frac{\mathcal L(f)(z)+ a_2y_0z+a_2y_1+a_1y_0}{a_2z^2+a_1z+a_0}\right)(t)
+	\end{eqnarray}
+\end{myExample}
+
+\section{Le problème de Sturm-Liouville}
+
+\begin{myExample}
+	Soit $L>0$. Trouver $\lambda\in\mathbb R$ et $y=y(x), y\neq 0$, solution de 
+	\begin{eqnarray}
+		\begin{cases}
+			y''(x)+\lambda y(x)=0,\,x\in(0,L)
+			\\
+			y(0)=y(L)=0
+		\end{cases}
+	\end{eqnarray}
+		(Notons que $y(t)\equiv0$ est solution triviale $\forall\lambda\in\mathbb R$)
+		
+	On peut montrer que pour $\lambda\leq0$, seule la solution triviale ($f(t)\equiv0$) satisfait le problème.
+	
+	Dans le cas où $\lambda>0$, on a
+	\begin{eqnarray}
+		y(x)=\frac{y_1}{\sqrt \lambda}\sin{(\sqrt\lambda x)}
+	\end{eqnarray}
+	Comme on doit encore imposer $y(L)=0$ et si on veut une solution non triviale ($\Rightarrow y_1\neq0$), on obtient
+	\begin{eqnarray*}
+		\frac{y_1}{\sqrt \lambda}\sin{(\sqrt\lambda L)}=0\Leftrightarrow\sin{(\sqrt\lambda L)}=0
+		\\
+		(\sqrt\lambda L)=n\pi,\text{avec }n\in\mathbb Z\Leftrightarrow \lambda=(\frac{n\pi}{L})^2
+	\end{eqnarray*}
+	Les solutions sont donc données par
+	\begin{eqnarray}
+		y(x)=\alpha_n\sin{\frac{n\pi}{L}x}
+	\end{eqnarray}
+	où $\alpha_n$ est une constante arbitraire.
+\end{myExample}
+
+\section{Autres problèmes résolus par l'analyse de Fourier}
+
+\begin{myExample}
+	Soit $f$ une fonction $C^1$ et $2\pi$ périodique. Soient $m, k\in mathbb R, m\neq0$. Trouver une solution $y=y(t)$ du problème suivant
+	\begin{eqnarray}
+		\begin{cases}
+			my''(t)+ky(t)=f(t),\,t\in(0,2\pi)
+			\\
+			y(0)=y(2\pi),\,y'(0)=y'(2\pi)
+		\end{cases}
+	\end{eqnarray}
+	
+	On commence par développer $f$ en série de Fourier.
+	\begin{eqnarray*}
+		f(t)=\frac{\alpha_0}{2}+\sum_{n=1}^{\infty}(\alpha_n\cos{nt}+\beta_n\sin{nt})
+	\end{eqnarray*}
+\end{myExample}
+
+%mettre exemple 17 3 du livre ici
+\label{sub:17.ex3}

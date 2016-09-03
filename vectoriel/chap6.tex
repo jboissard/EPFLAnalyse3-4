@@ -1,0 +1,154 @@
+\chapter[Théorème de la divergence]{Théorème de la divergence}
+
+\section{Généralités}
+
+\begin{myTheorem} {\bf Théorème de la divergence}
+\\
+	Soient $\Omega \subset \R^3$ un domaine régulier et $\nu$ la normale extérieure unité à $\Omega$. Soit $F:\overline{\Omega}\rightarrow\R^3, F\in C^1(\overline{\Omega};\R^3)$, alors
+	\begin{eqnarray*}
+		\iiint_\Omega \nabla\cdot F(x,y,z)dxdydz=\iint_{\partial\Omega}(F\cdot\nu)ds
+	\end{eqnarray*}
+	{\bf Corollaire} Si $\Omega$ et $\nu$ sont comme dans le théorème et si
+	\begin{eqnarray*}
+		F(x,y,z)=(x,y,z)\hspace{20 mm}G_1(x,y,z)=(x,0,0)
+		\\
+		G_2(x,y,z)=(0,y,0)\hspace{20 mm}G_3(x,y,z)=(0,0,z)
+	\end{eqnarray*}
+	alors
+	\begin{eqnarray*}
+		vol(\Omega)=\frac{1}{3}\iint_{\partial\Omega}(F\cdot\nu)ds=\iint_{\partial\Omega}(G_i\cdot\nu)ds, \hspace{20 mm}i=1,2,3
+	\end{eqnarray*}
+\end{myTheorem}
+
+\begin{myExample}
+	Vérifier le théorème de la divergence pour
+	\begin{eqnarray*}
+		\Omega=\{(x,y,z)\in\R^3:x^2+y^2+z^2<1\}\hspace{10 mm}et\hspace{10 mm}F(x,y,z)=(xy,y,z)
+	\end{eqnarray*}
+
+	\begin{enumerate}
+		\item 
+			Calcul de $\iiint_\Omega divFdxdydz$
+			\\
+			On trouve $\nabla\cdot F=y+2$
+			\\On passe en coordonnées sphériques $x=r\cos\theta\sin\phi$, $y=r\sin\theta\sin\phi$ et $r\cos\phi$. Le jacobien dans ce cas est $r^2\sin\phi$
+			\\On obtient
+			\begin{eqnarray*}
+				\iiint_\Omega y+2dxdydz=
+				\\
+				\int_0^1\int_0^\pi\int_0^{2\pi} (r\sin\theta\sin\phi+2)r^2\sin\phi drd\theta d\phi=
+				\\
+				2\pi\int_0^1\int_0^{\pi} 2r^2\sin\phi drd\phi=
+				\\
+				\frac{4}{3}\pi\int_0^\pi\sin\phi d\phi=
+				\\
+				\frac{8}{3}\pi
+			\end{eqnarray*}
+		\item Calcul de $\iint_\partial\Omega (F\cdot\nu)ds$
+		\\On paramétrise de la façon suivante: $\sigma(\theta, \phi)=(\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)$
+		\begin{eqnarray*}
+			\sigma_\theta\wedge\sigma_\phi=
+			\begin{vmatrix}
+				e_1&e_2&e_3
+				\\
+				-\sin\theta\sin\phi&\cos\theta\sin\phi&0
+				\\
+				\cos\theta\cos\phi&\sin\theta\cos\phi&-\sin\phi
+			\end{vmatrix}
+			=
+			\\
+			-\sin\phi(\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)=
+			\\-\sigma(\theta,\phi)\sin\phi
+		\end{eqnarray*}
+		et donc
+		\begin{eqnarray*}
+			\iint_\partial\Omega (F\cdot\nu)ds=
+			\\
+			\int_0^{2\pi}\int_0^\pi (\sin\theta\cos\theta\sin^2\phi,\sin\theta\sin\phi,\cos\phi)\cdot-\sigma(\theta,\phi)\sin\phi\,d\phi d\theta=
+			\\
+			\int_0^{2\pi}\int_0^\pi \sin\theta\cos^2\theta\sin^4\phi+\sin^2\theta\sin^3\phi,\cos^2\phi\sin\phi\,d\phi d\theta=
+			\\
+			\pi\int_0^\pi\sin^3\phi\,d\phi+2\pi\int_0^\pi\cos^2\phi\sin\phi\,d\phi=
+			\\
+			\pi\int_{\cos0}^{\cos\pi}1-u^2du+2\pi\int_0^\pi\cos^2\phi\sin\phi\,d\phi=
+			\\
+			\pi\left[u-\frac{u^3}{3}\right]_{\cos0}^{\cos\pi}+2\pi\left[-\frac{\cos^3\phi}{3}\right]_{0}^{\pi}=
+			\\\frac{4}{3}\pi+\frac{4}{3}\pi=
+			\\\frac{8}{3}\pi
+		\end{eqnarray*}
+		On a bien vérifié dans ce cas le théorème de la divergence.
+	\end{enumerate}
+\end{myExample}
+
+\begin{myExample}
+	Vérifier le théorème de la divergence pour $F(x,y,z)=(x,y,z)$ et 
+	\begin{eqnarray*}
+		\Sigma=\{(x,y,z)\in\R^3:x^2+y^2+z^2<4\hspace{10 mm}et\hspace{10 mm}x^2+y^2<3z\}
+	\end{eqnarray*}
+	\begin{enumerate}
+		\item avec le thérorème de la divergence
+			\\On passe en coordonnées cylindriques et div F=3.
+			\begin{eqnarray*}
+				\Omega=\{(r\cos\theta,r\sin\theta,z):\theta\in(0,2\pi),r\in(1,2),\frac{r^2}{3}<z<\sqrt{4-r^2}\}
+			\end{eqnarray*}
+			\begin{eqnarray*}
+				\iiint_\Omega \nabla\cdot FdV=
+				\\
+				\int_0^{2\pi}\int_0^{\sqrt{3}}\int_{\frac{r^2}{3}}^{\sqrt{4-r^2}}r\,dzdrd\theta=
+				\\
+				6\pi\int_0^{\sqrt{3}}(\sqrt{4-r^2}-\frac{r^2}{3})r\,dr=
+				\\
+				\frac{19}{2}\pi
+			\end{eqnarray*}
+		\item Sans le théorème de la divergence
+			\begin{eqnarray*}
+				\Sigma_1=\{\alpha(\theta,\phi)=(2\cos\theta\sin\phi,2\sin\theta\sin\phi,2\cos\phi):\theta\in[0,2\pi],\phi\in[0,\frac{\pi}{3}]\}
+				\\
+				\Sigma_2=\{\beta(r,\phi)=(r\cos\theta,r\sin\theta,\frac{r^2}{3}):\theta\in[0,2\pi],r\in[0,\sqrt{3}]\}
+			\end{eqnarray*}
+			Le calcul des normales donne:
+			\begin{eqnarray*}
+				\alpha_\theta\wedge\alpha_\phi=
+				\begin{vmatrix}
+					e_1&e_2&e_3
+					\\
+					-2\sin\theta\sin\phi&2\cos\theta\sin\phi&0
+					\\
+					2\cos\theta\cos\phi&2\sin\theta\cos\phi&-2\sin\phi
+				\end{vmatrix}=
+				\\
+				-4\sin\phi(\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)
+				\\
+				\beta_r\wedge\beta_\phi=
+				\begin{vmatrix}
+					e_1&e_2&e_3
+					\\
+					\cos\theta&\sin\theta&\frac{2}{3}r
+					\\
+					-r\sin\theta&r\cos\theta&0
+				\end{vmatrix}=
+				\\
+				(-\frac{2}{3}r^2\cos\theta,-\frac{2}{3}r^2\sin\theta,r)
+			\end{eqnarray*}
+			qui sont toutes les deux des normales intérieures
+			\\
+			On peut désormais calculeer les intégrales de surface
+			\begin{eqnarray*}
+				\iint_{\Sigma_1}(F\cdot\nu)ds=
+				\\
+				\int_0^{\frac{\pi}{3}}\int_0^{2\pi}\alpha(\theta,\phi)\cdot2\sin\phi\,\alpha(\theta,\phi)\,d\theta d\phi=
+				\\
+				8\int_0^{\frac{\pi}{3}}\int_0^{2\pi}\sin\phi(\cos^2\theta\sin^2\phi+\sin^2\theta\sin^2\phi+\cos^2\phi)\,d\theta d\phi=
+				\\
+				8\int_0^{\frac{\pi}{3}}\int_0^{2\pi}\sin\phi(\sin^2\phi+\cos^2\phi)\,d\theta d\phi=
+				\\
+				8\int_0^{\frac{\pi}{3}}\int_0^{2\pi}\sin\phi\,d\theta d\phi=
+				\\
+				16\pi\int_0^{\frac{\pi}{3}}\sin\phi\,d\theta d\phi=
+				\\
+				16\pi\left[-\cos\phi\right]_0^{\frac{\pi}{3}}=
+				\\
+				8\pi				
+			\end{eqnarray*}
+	\end{enumerate}
+\end{myExample}

@@ -1,0 +1,104 @@
+\chapter[Théorème de Green]{Théorème de Green}
+
+\section{Généralités}
+\begin{myTheorem}
+	{\bf Théorème de green} soit $\Omega \subset \R^2$ un domaine régulier dont le bord $\partial\Omega$ est orienté positivement (de sorte que la surface soit sur la gauche)
+	\begin{eqnarray*}
+		\iint_\Omega rot F \,dxdy=\int_{\partial\Omega}F\cdot dl
+	\end{eqnarray*}
+	{\bf Corollaire   Théorème de la divergence dans le plan}
+	\\Soient $\Omega, \partial\Omega$ et F comme précédemment. Soit $\nu$ un champ de normales extérieures unité à $\partial\Omega$, alors
+	\begin{eqnarray*}
+		\iint_\Omega div F \,dxdy=\int_{\partial\Omega}(F\cdot\nu) dl
+	\end{eqnarray*}
+	{\bf Corollaire}
+	\\Soient $\Omega$ et $\partial\omega$ comme précédemment. Soit $F(x,y)=(-y,x)$, $G_1(x,y)=(0,x)$ et $G_2(x,y)=(-y,0)$, alors
+	\begin{eqnarray*}
+		Aire(\Omega)=\frac{1}{2}\int_{\partial\Omega}F\cdot dl=\int_{\partial\Omega}G_1\cdot dl=\int_{\partial\Omega}G_2\cdot dl
+	\end{eqnarray*}
+\end{myTheorem}
+
+\begin{myExample}
+	Vérifier le théorème de Green pour $F(x,y)=(y^2,x)$ et $\Omega=\{(x,y)\in\R^2:x^2+y^2<1\}$
+	\\\\
+	\begin{enumerate}
+		\item Calcul de $\iint_\Omega rot F \,dxdy$
+		\\
+		$rot F = 1 - 2y$
+		\\Pour simplifier le problème on passe en coordonnées polaires ($(x,y)\rightarrow(r\cos\theta,r\sin\theta)$). Attention à ne pas oublier le {\bf jacobien} (dans notre cas {\bf r}) lors de l'intégration.
+		\begin{eqnarray*}
+			\iint_\Omega rot F \,dxdy=
+			\int_0^1\int_{0}^{2\pi}(1-2r\sin\theta)r d\theta dr=
+			\pi
+		\end{eqnarray*}
+		\item Calcul de $\int_{\partial\Omega}F\cdot dl$
+		\\On paramétrise de la façon suivante $\gamma(t)=(\cos t, \sin t)$ et $\gamma'(t)=(-\sin t, \cos t)$
+		\begin{eqnarray*}
+			\int_{\partial\Omega}F\cdot dl=\\
+			\int_{0}^{2\pi} (\sin^2 t, \cos t)\cdot(-\sin t, \cos t)dt=\\
+			-\int_0^{2\pi} \sin^3tdt+\int_0^{2\pi}\cos^2tdt=\\
+			-\int_{\cos 0}^{\cos 2\pi}1-u^2du+\int_0^{2\pi}\frac{1}{2}-\frac{\cos 2t}{2}dt=
+			\pi
+		\end{eqnarray*}
+	\end{enumerate}
+	Le théorème de Green est bien vérifié ici.
+\end{myExample}
+
+\begin{myExample}
+	Vérifier le théorème de Green pour $F(x,y)=(x+y,y^2)$ et $\Omega=\{(x,y)\in\R^2:1<x^2+y^2<4\}$
+	\\\\
+	\begin{enumerate}
+		\item Calcul de $\iint_\Omega rot F \,dxdy$
+		\\
+		$rot F = -1$
+		\\Comme avant en passe en coordonnées polaires.
+		\begin{eqnarray*}
+			\iint_\Omega rot F \,dxdy=
+			\int_0^1\int_{0}^{2\pi}-r d\theta dr=
+			-3\pi
+		\end{eqnarray*}
+		\item Calcul de $\int_{\partial\Omega}F\cdot dl$
+		\\Ici on a deux courbes, le cercle extérieur $\Gamma_1$ de rayon 2 et le cercle intérieur $\Gamma_2$ de rayon 1. On paramétrise en prenant r en argument de façon a n'effectuer qu'une seule fois l'intégrale. On a donc $\gamma(t)=(r\cos t, r\sin t)$ et $\gamma'(t)=(-r\sin t, r\cos t)$
+		\begin{eqnarray*}
+			\int_{\Gamma}F\cdot dl=\\
+			\int_{0}^{2\pi} (r\cos t + r\sin t, r\sin^2t)\cdot(-r\sin t, r\cos t)dt=\\
+			\int_0^{2\pi} r^3sin^2t\cos t-r^2\sin t\cos t-r^2\sin^2tdt=\\
+			r^3\left[\frac{sin^3t}{3}\right]_{0}^{2\pi}-r^2\left[\frac{sin^2t}{2}\right]_{0}^{2\pi}-r^2\int_{0}^{2\pi}\frac{1}{2}-\frac{\cos 2t}{2}dt=\\
+			-\pi r^2
+		\end{eqnarray*}
+		On remplace maintenant avec les bons r.
+		\begin{eqnarray*}
+		\int_{\partial\Omega}F\cdot dl=\int_{\Gamma_1}F\cdot dl-\int_{\Gamma_2}F\cdot dl=-\pi(2^2-1^2)=-3\pi
+		\end{eqnarray*}
+	\end{enumerate}
+	Le théorème de Green est bien vérifié ici.
+\end{myExample}
+
+\begin{myExample}
+	Calculer l'aire d'un cercle de rayon $r_0$, à l'aide du corollaire.
+	\\\\
+	Prenons $G_1(x,y)=(0,x)$
+	\\
+	la paramétrisation est la suivante $\gamma(t)=(r_0\cos t, r_0\sin t)$ et $\gamma'(t)=(-r_0\sin t, r_0\cos t)$
+	\begin{eqnarray*}
+		\int_{\partial\Omega} G_1\cdot dl=
+		\\
+		\int_0^{2\pi}(0,r_0\cos t)\cdot(-r_0\sin t, r_0\cos t)dt
+		\\
+		\int_0^{2\pi}r_0^2\cos^2tdt
+		\\
+		r_0^2\int_0^{2\pi}\frac{1}{2}+\frac{\cos 2t}{2}\,dt
+		\\
+		\pi r_0^2
+	\end{eqnarray*}
+	On peut également trouver ce résultat en utilisant le théorème de Green
+	\\
+	$\nabla\times G_1=1$ et attention à ne pas oublier le jacobien si on passe en coordonnées polaires.
+	\begin{eqnarray*}
+		\iint_\Omega rot G_1 dS=
+		\\
+		\int_0^{r_0}\int_0^{2\pi}rd\theta dr=
+		\\
+		\pi r_0^2
+	\end{eqnarray*}
+\end{myExample}

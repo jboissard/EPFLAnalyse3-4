@@ -1,0 +1,97 @@
+%!TEX root = /Users/Johan/Documents/University/Analyse/Latex/ana.tex
+\chapter{Transformée de Laplace}
+\section{Définitions et résultats théoriques}
+
+\begin{myDefinition}
+	Soit $f: \mathbb R_+=[0,+\infty)\rightarrow\mathbb R$ une fonction continue par morceaux (étendue à $\mathbb R$ de manière que $f(x)=0,\forall x<0$) et $\gamma_0\in\mathbb R$ tels que
+	\begin{eqnarray}
+		\int_{0}^{+\infty}|f(t)|e^{-\gamma_0t}dt<\infty
+	\end{eqnarray}
+	($\gamma_0$ est appelé l'\textbf{abscisse de convergence} de $f$), La \textbf{transformée de Laplace} de $f$ est définie par
+	\begin{eqnarray}
+		\mathcal L(f)(z)=F(z)=\int_0^{+\infty}f(t)e^{-tz}dt,&\forall z\in\overline O
+	\end{eqnarray}
+	où
+	\begin{eqnarray*}
+		O=\{z\in\mathbb C: \mathop{Re}z>\gamma_0\}\text{ et }\overline O=\{z\in\mathbb C: \mathop{Re}z\geq\gamma_0\}
+	\end{eqnarray*}
+\end{myDefinition}
+
+\begin{myTheorem}
+	Soient $f, \gamma_0$ et $O$ comme dans la définition précédente. Soit $g:\mathbb R_+\rightarrow\mathbb R$ continue par morceaux ($g(x)=0,\forall x<0$) telle que
+	\begin{eqnarray*}
+		\int_{0}^{+\infty}|g(t)|e^{-\gamma_0t}dt<\infty
+	\end{eqnarray*}
+	Alors les propriétés suivantes ont lieu
+	\begin{enumerate}
+		\item \textbf{Holomorphie}: La transformée de Laplace de $f$, $F$, est holomorphe dans $O$ et
+		\begin{eqnarray}
+			F'(z)=-\int_0^{\infty}tf(t)e^{-tz}=-\mathcal L(g)(z),&\forall z\in O,
+		\end{eqnarray}
+		où $g(t)=tf(t)$.
+		\item \textbf{Linéarité:} Soient $a,b\in\mathbb R$, alors
+		\begin{eqnarray}
+			\mathcal L(af+bg)(z)=a\mathcal L(f)(z)+b\mathcal L(g)(z).
+		\end{eqnarray}
+		\item \textbf{Dérivées:} Si de plus $f\in C^1(\mathbb R_+)$ et $\int_0^{\infty}|f'(t)|e^{-\gamma_0t}dt<\infty$, alors
+		\begin{eqnarray}
+			\ref{prop:laplace_derivee}
+			\mathcal L(f')(z)=z\mathcal L(f)(z)-f(0),&\forall z\in O
+		\end{eqnarray} 
+		Plus généralement si $n\in\mathbb N, f\in C^{(n)}(\mathbb R_+)$ et $\int_0^{\infty}|f^{(k)}(t)|e^{-\gamma_0t}dt<\infty$, pour $k=0,1,2,\dots,n$, alors	
+		\begin{eqnarray}
+			\mathcal L(f^{(n)})(z)=z^n\mathcal L(f)(z)-\sum_{k=0}^{n-1}z^kf^{n-k-1}(0), &\forall z\in O.
+		\end{eqnarray}
+		\item \textbf{Intégration:} Si $f\in C(\mathbb R), \gamma_0\geq0$ et
+		\begin{eqnarray*}
+			\varphi(t)=\int_0^tf(s)ds
+		\end{eqnarray*}
+		alors
+		\begin{eqnarray}
+			\mathcal L(\varphi)(z)=\frac{\mathcal L(f)(z)}{z},&\forall z\in O.
+		\end{eqnarray}
+		
+		\item \textbf{Décalage:} Si $a>0,b\in\mathbb R$ et
+		\begin{eqnarray*}
+			\varphi(t)=e^{-bt}f(at),
+		\end{eqnarray*}
+		alors
+		\begin{eqnarray}
+			\mathcal L(\varphi)(z)=\frac{1}{a}\mathcal L(f)(\frac{z+b}{a}),&\forall z \text{ tel que }\mathop{Re}(\frac{z+b}{a})\geq\gamma_0.
+		\end{eqnarray}
+		
+		\item \textbf{Convolution:}
+		\begin{eqnarray*}
+			f*g(t)=\int_{-\infty}^{\infty}f(t-s)g(s)ds=\int_0^{t}f(t-s)g(s)ds,
+		\end{eqnarray*}
+		alors
+		\begin{eqnarray}
+			\mathcal L(f*g)(z)=\mathcal L(f)(z)\mathcal L(g)(z),&\forall z\in\overline O.
+		\end{eqnarray}
+	\end{enumerate}
+\end{myTheorem}
+
+\begin{myTheorem}
+	(\textbf{Formule d'inversion})
+	Soient $f$ une fonction régulière par morceaux ($f(t)\equiv0$ si $t<0$) et $F(z)=\mathcal L(f)(z)$, sa transformée de Laplace satisfaisant les conditions suivantes:
+	\begin{eqnarray*}
+		\int_{0}^{+\infty}|f(t)|e^{-\gamma t}dt<\infty
+		\text{ et }
+		\int_{-\infty}^{+\infty}|F(\gamma + is)|ds<\infty,
+	\end{eqnarray*}
+	pour un certain $\gamma\in\mathbb R$, alors
+	\begin{eqnarray}
+		\frac{1}{2\pi}\int_{-\infty}^{\infty}F(\gamma+is)e^{(\gamma+is)t}ds=
+		\begin{cases}
+			\frac{1}{2}\left[f(t+0)+f(t-0)\right]&\text{si }t>0
+			\\
+			\frac{1}{2}f(0^+)&\text{si }t=0
+			\\
+			0&\text{si }t<0
+		\end{cases}
+	\end{eqnarray}
+	En particulier si $f$ est continue et $f(0)=0$, alors
+	\begin{eqnarray}
+		\frac{1}{2\pi}\int_{-\infty}^{\infty}F(\gamma+is)e^{(\gamma+is)t}ds=f(t),&\forall t\in\mathbb R
+	\end{eqnarray}
+\end{myTheorem}

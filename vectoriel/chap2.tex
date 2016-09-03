@@ -1,0 +1,114 @@
+\chapter[Intégrales curvilignes]{Intégrales curvilignes}
+
+\section{Généralités}
+
+\begin{myDefinition}
+	Soit $\Gamma \subset \R^n$ une courbe simple régulière paramétrée par $\gamma: [a,b]\rightarrow\Gamma,\gamma(t)=(\gamma_1(t),\dots,\gamma_n(t))$. On notera
+	\begin{eqnarray*}
+		\gamma'(t)=(\gamma_1'(t),\dots,\gamma'_n(t))
+		\hspace{10 mm} et\hspace{10 mm}
+		||\gamma'(t)||=\sqrt{\sum_{\nu=1}^{n}(\gamma_\nu'(t))^2}
+	\end{eqnarray*}
+	
+	\begin{enumerate}
+		\item Soit $\Gamma\rightarrow\R$ une fontion continue. L'intégrale de $f$ le long de $\Gamma$ est définie par
+			\begin{eqnarray*}
+				\int_\Gamma f dl=\int_{a}^{b} f(\gamma(t))||\gamma'(t)||dt
+			\end{eqnarray*}
+		\item Soit $F=(F_1,\cdot,F_n):\Gamma\rightarrow\R^n$ un champ vectoriel continu. L'intégrale de $F$ le long de $\Gamma$ est définie par
+			\begin{eqnarray*}
+				\int_\Gamma F\cdot dl=\int_{a}^{b} F(\gamma(t))\cdot\gamma'(t)\,dt=\int_{a}^{b}\sum_{\nu=1}^{n} F_nu(\gamma(t))\cdot\gamma'(t)\,dt
+			\end{eqnarray*}
+		\item si $\Gamma \subset \R^n$ est une courbe simple régulière par morceaux et si $f:\Gamma\rightarrow\R$ est une fonction continue et $F:\Gamma\rightarrow\R^n$ un champ vectoriel continu, alors
+			\begin{eqnarray*}
+				\int_\Gamma f dl=\sum_{i=1}^{N}\int_{a_i}^{a_{i+1}} f(\gamma(t))||\gamma'(t)||\,dt
+				\\
+				\int_\Gamma F\cdot dl=\sum_{i=1}^{N}\int_{a_i}^{a_{i+1}} F(\gamma(t))\cdot\gamma'(t)\,dt
+			\end{eqnarray*}
+		\item {\bf Remarques}
+			\begin{enumerate}
+				\item 
+					La longueur d'une courbe $\Gamma$ est obtenue en prenant $f\equiv1$, c'est-à-dire
+					\begin{eqnarray*}
+						longueur(\Gamma)=\int_\Gamma dl
+					\end{eqnarray*}
+				\item
+					Les définitions sont indépendantes du choix de la paramétrisation (au signe près pour un champs vectoriel).
+			\end{enumerate}
+	\end{enumerate}
+\end{myDefinition}
+
+\begin{myExample}
+Calculer la longueur d'un cercle de rayon r
+\\\\
+$\Gamma=\{\gamma:[0,2\pi]\rightarrow\R^2 \gamma(t)=(r\cos(t),r\sin(t))\}$
+\\
+alors $\gamma'(t)=(-r\sin(t),r\cos(t))$ et $|\gamma'(t)|=r$
+\\
+et donc 
+\\
+$longueur(\Gamma)=\int_\gamma dl=\int_0^{2\pi} r\,dt=2\pi r$
+\end{myExample}
+\begin{myExample}
+	Calculer $\int_\Gamma f dl$ quand $f(x,y)=\sqrt{x^2+4y^2}$ et
+	\\
+	$\Gamma = \{(x,y)\in\R^2:2y=x^2,x\in[0,1]\}$
+	\\\\
+	On peut paramétriser comme suit $\gamma(t)=(t, \frac{t^2}{2})$
+	\\
+	avec $\gamma'(t)=(1,t)$ et $|\gamma'(t)|=\sqrt{1+t^2}$
+	\\
+	et donc
+	\\
+	$\int_\Gamma fdl=\int_0^1 \sqrt{t^2+t^4}\sqrt{1+t^2}\,dt=\int_0^1 t(1+t^2)\,dt=\frac{3}{4}$
+\end{myExample}
+
+\begin{myExample}
+	Calculer $\int_\Gamma F\cdot dl$ quand $F(x,y)=(x^2,0)$ et
+	\\
+	$\Gamma = \{(x,y)\in\R^2:y=\cosh x,x\in[0,1]\}$
+	\\\\
+	On peut paramétriser comme suit $\gamma(t)=(t, \cosh t)$
+	\\
+	avec $\gamma'(t)=(1,\sinh t)$
+	\\
+	et donc
+	\\
+	$\int_\Gamma F\cdot dl=\int_0^1 (t^2,0)\cdot(1,\sinh t)dt=\frac{1}{3}$
+\end{myExample}
+
+\begin{myExample}
+	Soient $F(x,y)=(x+y,-x)$ et $\Gamma=\{(x,y)\in\R^2:y^2+4x^4-4x^2=0,x\geq0\}$
+	\begin{enumerate}
+		\item Montrer que $\gamma(t)=(\sin t, \sin 2t)$ avec $t\in[0,2\pi]$ est une paramétrisation de $\Gamma$.
+		\item Calculer $\int_\Gamma F\cdot dl$
+	\end{enumerate}
+	Une façon de le prouver est la suivante:
+	\begin{eqnarray*}
+		\sin^22t+4\sin^4t-4\sin^2t=0
+		\\
+		\sin^22t=4(\sin^2t-\sin^4t)
+		\\
+		\sin^22t=4\sin^2t(1-\sin^2t)
+		\\
+		\sin^22t=4\sin^2t\cos^2t
+		\\
+		\sin^22t=(2\cos t\sin t)^2=\sin^22t
+	\end{eqnarray*}
+	avec $\gamma'(t)=(\cos t,2\cos 2t)$
+	\begin{eqnarray*}
+		\int_\Gamma F\cdot dl=
+		\\
+		\int_{0}^{\pi}(\sin t+\sin2t,-\sin t)\cdot(\cos t,2\cos 2t)dt=
+		\\
+		\int_{0}^{\pi}\cos t(\sin t+\sin 2t)-2\sin t\cos 2tdt=
+		\\
+		\int_{0}^{\pi}\cos t(\sin t+2\sin t\cos t)-2\sin t(1-2\sin^2t)dt=
+		\\
+		\int_{0}^{\pi}\cos t\sin t\,dt+2\int_0^{\pi}\sin t\cos^2t\,dt-2\int_0^\pi\sin t+4\int_0^\pi \sin^3t\,dt=
+		\\
+		\left[\frac{\sin^2t}{2}\right]_0^{\pi}+2\left[-\frac{\cos^3t}{3}\right]_0^{\pi}-2\left[-\cos t\right]_0^\pi+4\left[u+\frac{u^3}{3}\right]_{\cos 0}^{\cos \pi}=
+		\\
+		0 + \frac{4}{3} - 4 + 4\frac{4}{3} = \frac{8}{3} 
+	\end{eqnarray*}
+\end{myExample}

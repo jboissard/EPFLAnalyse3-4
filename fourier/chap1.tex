@@ -1,0 +1,116 @@
+\chapter[Séries de Fourier]{Séries de Fourier}
+
+\section{Définitions et résultats théoriques}
+
+\begin{myDefinition}
+	Soient $N\geq1$ un entier et $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction bornée, T-périodique, $T\geq0$, (i.e. $f(x+T)=F(x), \forall x$) et intégrable sur $[0,T]$. Soient $n\in N$ et
+	\begin{eqnarray}
+		a_n=\frac{2}{T}\int_0^Tf(x)\cos(\frac{2\pi n}{T}x), n=0,1,2\dots
+		\\
+		b_n=\frac{2}{T}\int_0^Tf(x)\sin(\frac{2\pi n}{T}x), n=0,1,2\dots
+	\end{eqnarray}
+	
+	\begin{enumerate}
+		\item On appelle \textbf{série de Fourier partielle d'ordre} N de f et on note
+		\begin{eqnarray}
+			F_Nf(x)=\frac{a_0}{2}+\sum_{n=1}^N\{a_n\cos(\frac{2\pi n}{T}x)+b_n\sin(\frac{2\pi n}{T}x)\}
+		\end{eqnarray}
+		
+		\item On appelle \textbf{série de Fourier} de f la limit, quand elle existe, de $F_Nf(x)$. On la note
+		\begin{eqnarray}
+			Ff(x)=\lim\underset{N\rightarrow\infty}F_Nf(x)=\frac{a}{2}+\sum_{n=1}^{\infty}\{a_n\cos(\frac{2\pi n}{T}x)+b_n\sin(\frac{2\pi n}{T}x)\}
+		\end{eqnarray}
+	\end{enumerate}
+\end{myDefinition}
+
+\begin{myTheorem}
+	Soit $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction T-périodique , régulière par morceaux. Soient $a_n,b_n$ et $F_Nf$ comme dans la définition précédente. Alors la limite $Ff(x)$ existe pour tout $x\in\mathbb{R}$ et
+	\begin{eqnarray}
+		Ff(x)=\frac{f(x+0)+f(x-0)}{2},\forall x\in\mathbb{R}
+	\end{eqnarray}
+	(où $f(x+0)=lim\underset{y\rightarrow x\\y>x}f(y)$ et $f(x-0)=lim\underset{y\rightarrow x\\y<x}f(y)$). Donc en particulier, si $f$ est continue en $x$, alors
+	\begin{eqnarray}
+		Ff(x)=f(x)
+	\end{eqnarray}
+	De plus, si $f$ est continue, alors la convergwnce de la séride ci-dessus vers la fonction $f$ est uniforme.
+\end{myTheorem}
+
+Soit $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction T-périodique, régulière par morceaux. Alors Ff est T-périodique et de plus
+\begin{enumerate}
+	\item si f est \textbf{paire} (i.e. $f(x)=f(-x),\forall x$), alors $b_n=0$ et
+	\begin{eqnarray}
+		Ff(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}\{a_n\cos(\frac{2\pi n}{T}x)\}
+	\end{eqnarray}
+	
+	\item si f est \textbf{impaire} (i.e. $f(x)=-f(-x),\forall x$), alors $a_n=0$ et
+	\begin{eqnarray}
+		Ff(x)=\sum_{n=1}^{\infty}b_n\sin(\frac{2\pi n}{T}x)
+	\end{eqnarray}
+	
+	\item La série de Fourier s'écrit en \textbf{notations complexes}
+	\begin{eqnarray}
+		Ff(x)=\sum_{n=1}^{\infty}c_ne^{i\frac{2\pi n}{T}x}
+	\end{eqnarray}
+	où
+	\begin{eqnarray}
+		c_n=\frac{1}{T}\int_0^Tf(x)e^{-i\frac{2\pi n}{T}x}
+	\end{eqnarray}
+\end{enumerate}
+
+
+\begin{myTheorem}
+	\textbf{Différentiation terme à terme} Soit $f: \mathbb{R}\rightarrow\mathbb{R}$ une fonction T-périodique, régulière par morceaux. Soit
+	\begin{eqnarray*}
+		\frac{a}{2}+\sum_{n=1}^{\infty}\{a_n\cos(\frac{2\pi n}{T}x)+b_n\sin(\frac{2\pi n}{T}x)\}
+	\end{eqnarray*}
+	sa série de Fourier. Alors la série obtenue par la différentiation terme à terme de la série de Fourier de $f$ converge et $\forall x\in\mathbb{R}$
+	\begin{eqnarray}
+		\frac{f'(x+0)+f'(x-0)}{2}=\sum_{n=1}^{\infty}\frac{2\pi n}{T}\{-a_n\sin(\frac{2\pi n}{T}x)+b_n\cos(\frac{2\pi n}{T}x)\}
+	\end{eqnarray}
+\end{myTheorem}
+
+\begin{myTheorem}
+	\textbf{Intégration terme à terme} Soit $f: \mathbb{R}\rightarrow\mathbb{R}$ une fonction T-périodique, régulière par morceaux. Soit
+	\begin{eqnarray*}
+		\frac{a}{2}+\sum_{n=1}^{\infty}\{a_n\cos(\frac{2\pi n}{T}x)+b_n\sin(\frac{2\pi n}{T}x)\}
+	\end{eqnarray*}
+	sa série de Fourier. Alors, pour tout $x_0, x\in[0,T]$, on a
+	\begin{eqnarray}
+		\int_{x_0}^xf(t)\,dt=\int_{x_0}^x\frac{a_0}{2}dt+\sum_{n=1}^{\infty}\int_{x_0}^x\{a_n\cos(\frac{2\pi n}{T}x)+b_n\sin(\frac{2\pi n}{T}x)\}\,dt
+	\end{eqnarray}
+	De plus, pour $x_0$ fixé, la convergence est uniforme.
+\end{myTheorem}
+
+
+\begin{myTheorem}
+	\textbf{Identité de Parseval}. Soit $f:\mathbb{R}\rightarrow\mathbb{R}$ une fonction T-périodique, régulière par morceaux. Alors
+	\begin{eqnarray}
+		\frac{2}{T}\int_0^T(f(x))^2\,dx=\frac{a_0^2}{2}+\sum_{n=1}^\infty(a_n^2+b_n^2)
+	\end{eqnarray}
+\end{myTheorem}
+
+\textbf{Série de Fourier en cosinus}. Soit $f:[0,L]\rightarrow\mathbb{R}$ une fonction régulière par morceaux. Alors la série suivante converge
+\begin{eqnarray}
+	F_cf(x)=\frac{a_0}{2}+\sum_{n=1}^\infty a_n\cos(\frac{\pi n}{L}x)
+\end{eqnarray}
+où
+\begin{eqnarray}
+	a_n=\frac{L}{2}\int_0^Lf(y)\cos(\frac{\pi n}{L}y)\,dy
+\end{eqnarray}
+De plus en tous points $x\in (0,L)$ où $f$ est continu, l'égalité suivante a lieu
+\begin{eqnarray}
+	F_cf(x)=f(x)
+\end{eqnarray}
+
+\textbf{Série de Fourier en sinus}. Soit $f:[0,L]\rightarrow\mathbb{R}$ une fonction régulière par morceaux. Alors la série suivante converge
+\begin{eqnarray}
+	F_sf(x)=\frac{a_0}{2}+\sum_{n=1}^\infty b_n\sin(\frac{\pi n}{L}x)
+\end{eqnarray}
+où
+\begin{eqnarray}
+	b_n=\frac{L}{2}\int_0^Lf(y)\sin(\frac{\pi n}{L}y)\,dy
+\end{eqnarray}
+De plus en tous points $x\in (0,L)$ où $f$ est continu, l'égalité suivante a lieu
+\begin{eqnarray}
+	F_sf(x)=f(x)
+\end{eqnarray}

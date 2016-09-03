@@ -1,0 +1,80 @@
+\chapter[Champs qui dérivent d'un potentiel]{Champs qui dérivent d'un potentiel}
+
+\section{Généralités}
+
+\begin{myDefinition}
+	Soient $\Omega \subset \R^n$ un ouvert et $F = F(x) = (F_{1},\dots,F_n):\Omega\rightarrow\R^n$. On dit que F {\bf dérive d'un potentiel} sur $\Omega$ s'il existe $f\in C^1(\Omega)$ (f est appelé {\bf potentiel}) tel que
+	\begin{eqnarray*}
+		F(x)= \nabla f(x), \forall x\in \Omega
+	\end{eqnarray*}
+\end{myDefinition}
+
+\begin{myTheorem}
+	Soient $\Omega \subset \R^n$ un ouvert et $F\in C^1(\Omega;\R^n)$ si $F$ dérive d'un potentiel sur $\Omega$, alors 
+	\begin{eqnarray*}
+		\nabla \times F(x)=0, \hspace{10 mm}\forall x\in \Omega
+	\end{eqnarray*}
+	On peut également écire de la façon suivante:
+	\begin{eqnarray*}
+		\frac{\partial F_i}{\partial x_j}=\frac{\partial F_j}{\partial x_i}, \hspace{10 mm}\forall i, j=1,\dots,n \hspace{3 mm}et\hspace{3 mm}\forall x\in \Omega
+	\end{eqnarray*}
+	
+	{\bf Remarques: }
+	\begin{enumerate}
+		\item La condition ci-dessous n'est pas suffisante pour garantir l'existence d'un tel potentiel, il faut pour cela des conditions sur le dmonaine $\Omega$. Si le domaine $\Omega$ est convexe, ou plus généralement si il est simplement connexe, la condition est bien suffisante.
+		\\
+		Dans $\R^2$ un domaine simplement connexe est un domaine sans trou.
+		\item Dans un domaine (c'est-à-dire un ensemble ouvert et connexe), le potentiel est unique à une constante près.
+	\end{enumerate}
+\end{myTheorem}
+
+\begin{myTheorem}
+	Soit $\Omega \subset \R^n$ un domaine et soit $F \in C(\Omega;\R^n)$. Les affirmations suivantes sont alors équivalentes
+	\begin{enumerate}
+		\item F dérive d'un potentiel
+		\item Pour toute courbe simple, fermée, régulière par morceaux, $\Gamma \subset \Omega$
+			\begin{eqnarray*}
+				\int_\Gamma F\cdot dl=0
+			\end{eqnarray*}
+		\item Soient $\Gamma_1, \Gamma_2 \subset\Omega$ deux courbes simples régulières par morceaux joingant A à B alors
+			\begin{eqnarray*}
+				\int_{\Gamma_1} F\cdot dl=\int_{\Gamma_2} F\cdot dl
+			\end{eqnarray*}
+		
+	\end{enumerate}
+\end{myTheorem}
+
+\begin{myExample}
+	Soit $F(x,y,z)=(2x\sin z,ze^y,x^2\cos z+ e^y)$. Montrer que F dérive d'un potentiel sur $\Omega=\R^3$ et trouver un tel potentiel.
+	\\\\
+	On vérifie si la condition nécessaire $rot F=0$ est satisfaite.
+	\begin{eqnarray*}
+		\nabla\times F=
+		\begin{vmatrix}
+		e_1&e_2&e_3
+		\\
+		\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}
+		\\
+		2x\sin z&ze^y&x^2\cos z+ e^y
+		\end{vmatrix}
+		=
+		\begin{pmatrix}
+		0
+		\\
+		0
+		\\  
+		0
+		\\
+		\end{pmatrix}
+	\end{eqnarray*}
+	Comme $\Omega=\R^3$ et donc convexe, F dérive d'un potentiel.
+	\begin{eqnarray*}
+		f(x,y,z)=\int \frac{\partial f}{\partial x}dx=\int 2x\sin z\,dx=x^2\sin z +\alpha(y,z)
+		\\
+		f(x,y,z)=\int \frac{\partial f}{\partial y}dy=\int ze^y\,dy=ze^y +\beta(x,z)
+		\\
+		f(x,y,z)=\int \frac{\partial f}{\partial z}dz=\int x^2\cos z+e^y,dz=x^2\sin z+ze^y+\gamma(x,y)
+		\\
+		\Rightarrow f(x,y,z)=x^2\sin z+ze^y+ C
+	\end{eqnarray*}
+\end{myExample}

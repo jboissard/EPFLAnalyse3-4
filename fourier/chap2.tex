@@ -1,0 +1,102 @@
+\chapter{Transformées de Fourier}
+\label{chap:FourierTrans}
+\section{Définitions et résultats théoriques}
+\begin{myDefinition}
+	Soit $f: \mathbb{R}\rightarrow\mathbb{R}$ une fonction continue par morcceaux et telle que $\int_{-\infty}^{+\infty}|f(x)|dx<\infty$. La \textbf{transformée de Fourier} de $f$ est définie par
+	\begin{eqnarray}
+		\textswab{F}(\alpha)=\hat{f}(\alpha)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(y)e^{-i\alpha y}\,dy
+	\end{eqnarray}
+	Remarque: certains auteur définissent la transformée de Fourier en remplaçant le coefficient $\frac{1}{\sqrt{2\pi}}$ par $1$ ou par $\frac{1}{2\pi}$.
+\end{myDefinition}
+
+\begin{myTheorem}
+	Soient $f,g;\mathbb{R}\rightarrow\mathbb{R}$ des fonctions continues par morceaux et telles que
+	\begin{eqnarray*}
+		\int_{-\infty}^{+\infty}|f(x)|dx<\infty,
+		\\
+		\int_{-\infty}^{+\infty}|g(x)|dx<\infty
+	\end{eqnarray*}
+	Les propriétés suivantes ont lieu.
+	\begin{enumerate}
+		\item \textbf{Continuité}: La fonction $\hat{f}:\mathbb{R}\rightarrow\mathbb{C}$ est alors continue et
+		\begin{eqnarray}
+			\lim_{|\alpha|\to\infty}|\hat{f}(\alpha)|=0
+		\end{eqnarray}
+		
+		\item\textbf{Linéarité}: Soient $a,b\in\mathbb{R}$, alors
+		\begin{eqnarray}
+			\textswab{F}(af+bg)=a\textswab{F}(f)+b\textswab{F}(g)
+		\end{eqnarray}
+		
+		\item\textbf{Dérivée}: Si de plus $f\in C^1(\mathbb{R})$ et $\int_{-\infty}^{+\infty}|f'(x)|<\infty$, alors
+		\begin{eqnarray}
+			\textswab{F}(f')(\alpha)=i\alpha \textswab{F}(f)(\alpha), \,\,\forall\alpha\in\mathbb{R}
+		\end{eqnarray}
+		Plus généralement si $n\in\mathbb{N},f\in C^n(\mathbb{R})$ et $\int_{-\infty}^{+\infty}|f^{(k)}(x)|dx<\infty$, pour $k=1,2,\dots,n$, alors
+		\begin{eqnarray}
+			\textswab{F}(f^{(n)})(\alpha)=(i\alpha)^n\textswab{F}(f)(\alpha),\,\,\forall\alpha\in\mathbb{R}
+		\end{eqnarray}
+		
+		\item \textbf{Décalage}: Si $a.b\in\mathbb{R}, a\neq 0$, et
+		\begin{eqnarray*}
+			g(x)=e^{-ibx}f(ax)
+		\end{eqnarray*}
+		alors
+		\begin{eqnarray}
+			\textswab{F}(g)(\alpha)=\frac{1}{|\alpha|}\textswab{F}(f)(\frac{\alpha +b}{a})
+		\end{eqnarray}
+		
+		\item\textbf{Convolution}: Si on définit le produit de convolution par
+		\begin{eqnarray*}
+			f\times g(x)=\int_{-\infty}^{+\infty}f(x-t)g(t)dt
+		\end{eqnarray*}
+		alors
+		\begin{eqnarray}
+			\textswab{F}(f\times g)=\sqrt{2\pi}\textswab{F}(f)\textswab{F}(g)
+		\end{eqnarray}
+		
+		\item\textbf{Identité de Plancherel}: Si en outre $\int_{-\infty}^{+\infty}(f(x))^2dx<\infty$, alors
+		\begin{eqnarray}
+			\int_{-\infty}^{+\infty}(f(x))^2\,dx=\int_{-\infty}^{+\infty}|\hat{f}(\alpha)|^2\,d\alpha
+		\end{eqnarray}
+	\end{enumerate}
+\end{myTheorem}
+
+\begin{myTheorem}
+	Soit $f: \mathbb{R}\rightarrow\mathbb{R}$ une fonction régulière par morceaux telle que
+	
+	\begin{eqnarray*}
+		\int_{-\infty}^{+\infty}|f(x)|\,dx<\infty\\
+		\int_{-\infty}^{+\infty}|f(\alpha)|\,d\alpha<\infty
+	\end{eqnarray*}
+	
+	
+	\begin{enumerate}
+		\item \textbf{Formule d'inversion}: On a
+		\begin{eqnarray}
+			\frac{f(x+0)+f(x-0)}{2}=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\hat{f}(\alpha)e^{i\alpha x}\,d\alpha
+		\end{eqnarray}
+		En particulier si $f$ est continue en x, alors
+		\begin{eqnarray}
+			f(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\hat{f}(\alpha)e^{i\alpha x}\,d\alpha
+		\end{eqnarray}
+		
+		\item \textbf{Transformée en cosinus}: Si $f$ est paire, alors
+		\begin{eqnarray}
+			\textswab{F}(f)(\alpha)=\sqrt{\frac{2}{\pi}}\int_0^\infty f(y)\cos(\alpha y)\,dy
+		\end{eqnarray}
+		et en tout point x de continuité de f
+		\begin{eqnarray}
+			f(x)(\alpha)=\sqrt{\frac{2}{\pi}}\int_0^\infty \hat{f}(\alpha)\cos(\alpha x)\,d\alpha
+		\end{eqnarray}
+		
+		\item \textbf{Transformée en sinus}: Si $f$ est impaire, alors
+		\begin{eqnarray}
+			\textswab{F}(f)(\alpha)=-i\sqrt{\frac{2}{\pi}}\int_0^\infty f(y)\sin(\alpha y)\,dy
+		\end{eqnarray}
+		et en tout point x de continuité de f
+		\begin{eqnarray}
+			f(x)(\alpha)=i\sqrt{\frac{2}{\pi}}\int_0^\infty \hat{f}(\alpha)\sin(\alpha x)\,d\alpha
+		\end{eqnarray}
+	\end{enumerate}
+\end{myTheorem}

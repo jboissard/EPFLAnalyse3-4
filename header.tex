@@ -1,0 +1,91 @@
+\documentclass[13pt]{book}
+
+\usepackage[avantgarde]{quotchap} %% rem
+\usepackage{fancyhdr}
+\fancyhead{} % clear
+\fancyfoot{} % clear
+\fancyhead[RO,LE]{\thepage}
+\fancyfoot[RE,LO]{{\gray Version \version du \today}}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\renewcommand\headrulewidth{1pt}
+\usepackage[francais]{babel}
+\usepackage[french]{varioref}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{url}
+
+\usepackage{a4,graphicx,fancyhdr}
+
+%\usepackage[intlimits]{amsmath}
+\usepackage{amssymb}
+%\usepackage{amsthm}	%theorem-environement
+\usepackage{pstricks}	%PS-Tricks-Graphics
+\usepackage{pst-all}
+\usepackage{framed} % colored text-frames 
+\usepackage{amsmath}
+\usepackage{yfonts}[1998/10/03]
+
+\usepackage{makeidx}		% makeindex
+\makeindex
+
+\usepackage{graphics}
+\newcommand{\field}[1]{\mathbb{#1}}
+\newcommand{\N}{\field{N}}
+\newcommand{\Z}{\field{Z}}
+\newcommand{\R}{\field{R}}
+\newcommand{\C}{\field{C}}
+
+%%% EVERYTHING
+% 1: bordercol
+% 2: shadecol
+% 3: rulewidth
+% 4: separator
+% 5: Text
+\newenvironment{myEverything}[5]{%
+  \def\FrameCommand{\fboxrule=#3 \fboxsep=#4 \fcolorbox{#1}{#2}}
+  \MakeFramed {\advance\hsize-\width \FrameRestore}% \width
+  \vspace{#3}\vspace{-11mm}\vspace{\baselineskip}\paragraph{#5}%
+}{%
+  %\vspace{-1mm}
+  \endMakeFramed%
+} 
+
+%%% E X E M P L E
+\definecolor{exShadecolor}{rgb}{0.95,0.95,1.0}
+\definecolor{exBordercolor}{rgb}{0.5,0.5,1.0}
+\newenvironment{myExample}[1][Exemple]%
+{  \begin{myEverything}{exBordercolor}{exShadecolor}{.2mm}{4mm}{#1}\begin{small}  }%
+{  \end{small}\end{myEverything}  }
+
+%%% T H E O R E M
+\definecolor{thShadecolor}{rgb}{1.0,0.9,0.9}
+\definecolor{thBordercolor}{rgb}{1.0,0.5,0.5}
+\newenvironment{myTheorem}[1][Théorème]{  \begin{myEverything}{thBordercolor}{thShadecolor}{1mm}{4mm}{#1}  }{  \end{myEverything}  }
+
+%%% D E F I N I T I O N
+\definecolor{dfShadecolor}{rgb}{0.9,1.0,0.9}
+\definecolor{dfBordercolor}{rgb}{0.5,1.0,0.5}
+\newenvironment{myDefinition}[1][Définition]{  \begin{myEverything}{dfBordercolor}{dfShadecolor}{.2mm}{4mm}{#1}  }{  \end{myEverything}  }
+
+%%% P R O P R I E T E 
+\definecolor{prShadecolor}{rgb}{1.0,10.95,0.95}
+\definecolor{prBordercolor}{rgb}{1.0,0.5,0.5}
+\newenvironment{myProperty}[1][Propriété]{  \begin{myEverything}{prBordercolor}{prShadecolor}{.2mm}{4mm}{#1}  }{  \end{myEverything}  }
+
+%%% P R O P O S I T I O N
+\definecolor{prShadecolor}{rgb}{1.0,10.95,0.95}
+\definecolor{prBordercolor}{rgb}{1.0,0.5,0.5}
+\newenvironment{myProposition}[1][Proposition]{  \begin{myEverything}{prBordercolor}{prShadecolor}{.2mm}{4mm}{#1}  }{  \end{myEverything}  }
+
+
+%%% Q U O T E
+\newsavebox{\myQuoteSBOX}
+\newenvironment{myQuote}[1]{%
+	\savebox{\myQuoteSBOX}{#1}%
+	\begin{flushright} \begin{itshape}%
+}{%
+	\end{itshape}\\% 
+	\textup{ \usebox{\myQuoteSBOX} }%	 
+	\end{flushright}%
+}
